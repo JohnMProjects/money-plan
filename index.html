@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14342A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Money Plan">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<title>My Money Plan</title>
+<style>
+/* Fonts are bundled with the app so it works offline */
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-ext-500-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-mono-latin-ext-600-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-ext-500-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-ext-600-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-ext-700-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/newsreader-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
+<style>
+/* Theme: matches johnmprojects.github.io (forest, paper, gold; Newsreader / Inter / IBM Plex Mono) */
+:root{
+  color-scheme: light;
+  --forest:#14342A; --forest-900:#0E241D; --gold:#B4894A; --gold-deep:#8F6B2C; --gold-soft:#C9A874; --mist:#A7B8AD;
+  --bg:#F5F2EA; --surface:#FCFBF6; --surface-2:#EFEBE0; --border:#E2DDD0;
+  --text:#1B211D; --text-2:#5C5F54; --muted:#6E7166; --head:#14342A;
+  --accent:#B4894A; --accent-ink:#fff; --link:#8F6B2C;
+  --s1:#1a7d5c; --s2:#c47f2e; --s3:#4a90c2; --s4:#d9a93b; --s5:#c76a93; --s6:#6f8f2a; --s7:#7a62c9; --s8:#cf4f43;
+  --good:#2f8a4f; --good-ink:#1f6b3a; --serious:#c47f2e; --crit:#b83c32; --track:#E8E3D6; --grid:#E2DDD0;
+  --ff-display:"Newsreader", Georgia, serif; --ff-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --ff-mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E241D; --surface:#13302a; --surface-2:#1a3a32; --border:#2c4a40;
+    --text:#F5F2EA; --text-2:#A7B8AD; --muted:#8a9c91; --head:#F5F2EA;
+    --accent:#C9A874; --accent-ink:#14342A; --link:#C9A874;
+    --s1:#249a70; --s2:#c47a2a; --s3:#4a8ac4; --s4:#b48a22; --s5:#c8668f; --s6:#6f9a2a; --s7:#8a76d6; --s8:#d4584d;
+    --good:#3fa865; --good-ink:#6fbf8f; --crit:#e0685d; --track:#1f4138; --grid:#24463c;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0E241D; --surface:#13302a; --surface-2:#1a3a32; --border:#2c4a40;
+  --text:#F5F2EA; --text-2:#A7B8AD; --muted:#8a9c91; --head:#F5F2EA;
+  --accent:#C9A874; --accent-ink:#14342A; --link:#C9A874;
+  --s1:#249a70; --s2:#c47a2a; --s3:#4a8ac4; --s4:#b48a22; --s5:#c8668f; --s6:#6f9a2a; --s7:#8a76d6; --s8:#d4584d;
+  --good:#3fa865; --good-ink:#6fbf8f; --crit:#e0685d; --track:#1f4138; --grid:#24463c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;gap:12px;padding:12px 0 4px}
+.top h1{font-size:18px;margin:0;flex:1}
+nav{display:flex;gap:4px;overflow-x:auto;padding:4px 0 8px}
+nav button{background:none;border:0;color:var(--text-2);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{background:var(--surface-2);color:var(--text);font-weight:600}
+main{padding:20px 0 70px}
+section.tab{display:none} section.tab.on{display:block}
+h2{font-size:20px;margin:0 0 4px} h3{font-size:15.5px;margin:0 0 10px}
+.sub{color:var(--text-2);margin:0 0 16px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;min-width:0}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.mt{margin-top:12px}
+input,select{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
+input[type=number]{text-align:right}
+input[type=checkbox]{width:auto}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.btn{font:inherit;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.sm{padding:4px 10px;font-size:13.5px}
+.btn.x{border:0;background:none;color:var(--muted);font-size:20px;line-height:1;padding:4px 8px}
+.btn.x:hover{color:var(--crit)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sp{flex:1}
+.muted{color:var(--muted)} .small{font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--text-2);font-weight:500;font-size:12.5px;border-bottom:1px solid var(--border);padding:6px}
+td{border-bottom:1px solid var(--border);padding:7px 6px;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tr.total td{font-weight:650;border-top:1px solid var(--border)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tscroll{overflow-x:auto}
+/* interview */
+.wiz{display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:start}
+.wsteps{list-style:none;margin:0;padding:0;position:sticky;top:120px}
+.wsteps li button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;font:inherit;color:var(--text-2);padding:8px 10px;border-radius:8px;cursor:pointer}
+.wsteps li button[aria-current="step"]{background:var(--surface);color:var(--text);font-weight:600;box-shadow:0 0 0 1px var(--border)}
+.wsteps .n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:700;background:var(--surface-2)}
+.wsteps .ok .n{background:var(--good);color:#fff}
+.q{margin-bottom:18px}
+.q > label, .q > .ql{display:block;font-weight:550;margin-bottom:2px}
+.q .hint{color:var(--muted);font-size:13px;margin:0 0 6px}
+.q input,.q select{max-width:340px}
+.hint{color:var(--muted);font-size:13px}
+.choices{display:flex;flex-direction:column;gap:6px;max-width:540px}
+.choices label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:400}
+.choices label:has(input:checked){border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.choices input{width:auto;margin-top:4px}
+.lst{width:100%}
+.lst td{padding:4px;border:0}
+.lst th{border:0;padding:2px 4px}
+.lst input,.lst select{padding:7px 8px}
+.wnav{display:flex;gap:8px;margin-top:8px;border-top:1px solid var(--border);padding-top:14px}
+.say{border-left:3px solid var(--accent);padding:2px 0 2px 12px;color:var(--text-2);margin:0 0 18px;font-size:14.5px}
+h4{font-size:14.5px;margin:22px 0 4px}
+/* plan */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:14px}
+.hero .b{border-top:4px solid var(--c);padding-top:8px}
+.hero .p{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.hero .l{font-size:13.5px;font-weight:600;margin-top:2px}
+.hero .a{font-size:13px;color:var(--text-2);font-variant-numeric:tabular-nums}
+.splitbar{display:flex;height:26px;border-radius:7px;overflow:hidden;gap:2px;background:var(--surface)}
+.splitbar i{display:block;height:100%;background:var(--c)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:7px;vertical-align:-1px}
+.note{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.note:last-child{border-bottom:0}
+.note .ic{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;background:var(--accent)}
+.note.bad .ic{background:var(--crit)} .note.warn .ic{background:var(--serious)} .note.good .ic{background:var(--good)}
+.note b{display:block;margin-bottom:2px}
+.note p{margin:0;color:var(--text-2);font-size:14px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
+.tl li:last-child{border-bottom:0}
+.tl .d{font-weight:650;font-variant-numeric:tabular-nums;font-size:14px}
+.tl .t{font-size:14px;color:var(--text-2)} .tl .t b{color:var(--text);font-weight:600}
+.bench{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+.bench:last-child{border-bottom:0}
+.bar{height:8px;background:var(--track);border-radius:4px;overflow:hidden;grid-column:1/-1;position:relative}
+.bar i{display:block;height:100%;background:var(--s1);border-radius:0 4px 4px 0}
+.bar.over i{background:var(--crit)}
+.bar em{position:absolute;top:0;bottom:0;width:2px;background:var(--text)}
+.pill{display:inline-flex;gap:4px;align-items:center;font-size:12.5px;padding:1px 8px;border-radius:999px;background:var(--surface-2);color:var(--text-2);white-space:nowrap}
+.pill.good{color:var(--good-ink)} .pill.good::before{content:"✓";font-weight:800}
+.pill.bad{color:var(--crit)} .pill.bad::before{content:"✕";font-weight:800}
+.callout{border-left:3px solid var(--accent);background:var(--surface-2);padding:12px 14px;border-radius:0 8px 8px 0;color:var(--text-2);font-size:14.5px}
+.callout b{color:var(--text)}
+.callout.bad{border-color:var(--crit)}
+.empty{color:var(--muted);padding:8px 0}
+.paid td{color:var(--muted)} .paid .bn{text-decoration:line-through}
+.cat{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px}
+.cat:last-child{border-bottom:0}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart .lg{display:flex;gap:14px;font-size:12.5px;color:var(--text-2);margin-top:4px}
+.lg .dash{display:inline-block;width:18px;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:6px}
+.lg .solid{display:inline-block;width:18px;border-top:2px solid var(--s1);vertical-align:middle;margin-right:6px}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:30}
+#toast.on{opacity:1}
+.tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);font-size:12.5px;padding:5px 8px;border-radius:6px;opacity:0;z-index:20;white-space:nowrap}
+@media (max-width:760px){
+  .wiz{grid-template-columns:1fr}
+  .wsteps{position:static;display:flex;overflow-x:auto;gap:4px}
+  .wsteps li button{white-space:nowrap;padding:6px 8px}
+  .wsteps .lbl{display:none}
+  .wsteps li button[aria-current="step"] .lbl{display:inline}
+  .tl li{grid-template-columns:82px 1fr}
+  .hero .p{font-size:24px}
+  .lst thead{display:none}
+  .lst tr{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:8px 0;border-bottom:1px solid var(--border)}
+  .lst td{padding:0}
+  .lst td.wide{grid-column:1/-1}
+  .lst td[data-l]::before{content:attr(data-l);display:block;font-size:12px;color:var(--muted)}
+}
+
+/* brand layer */
+body{font-family:var(--ff-body);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+header{background:var(--forest);border-bottom:1px solid rgba(167,184,173,.22)}
+.top h1{font-family:var(--ff-display);font-weight:600;font-size:21px;color:#F5F2EA;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.top h1 .mark{font-family:var(--ff-display);font-size:15px;font-weight:600;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--gold-soft);color:var(--forest);letter-spacing:0}
+.top h1 .sub2{font-family:var(--ff-mono);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-left:4px}
+#themeBtn{background:transparent;color:#F5F2EA;border-color:rgba(167,184,173,.35);border-radius:999px}
+nav button{color:var(--mist);border-radius:999px;font-size:14.5px}
+nav button:hover{color:#F5F2EA}
+nav button[aria-selected="true"]{background:var(--gold-soft);color:var(--forest)}
+h2,h3,h4{font-family:var(--ff-display);color:var(--head);letter-spacing:-.01em}
+h2{font-size:26px;font-weight:500;line-height:1.2} h3{font-size:18px;font-weight:600} h4{font-size:16.5px;font-weight:600}
+.eyebrow{font-family:var(--ff-mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+:root[data-theme="dark"] .eyebrow{color:var(--gold-soft)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .eyebrow{color:var(--gold-soft)} }
+.card{border-radius:14px;border-color:var(--border)}
+.btn{border-radius:999px;font-weight:600;padding:9px 18px}
+.btn.sm{padding:5px 12px}
+.btn.x{border-radius:8px;padding:4px 8px}
+.btn.primary:hover{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff}
+input,select{border-radius:10px;background:var(--surface)}
+input:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(180,137,74,.18)}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hero .p{font-family:var(--ff-mono);font-weight:500;letter-spacing:-.02em}
+.say{border-left-color:var(--gold);font-family:var(--ff-display);font-size:17px;font-style:italic;color:var(--text-2)}
+.callout{border-left-color:var(--gold)}
+.wsteps li button[aria-current="step"]{border-radius:999px}
+.wsteps .n{font-family:var(--ff-mono)}
+.wsteps li button[aria-current="step"] .n{background:var(--forest);color:#F5F2EA}
+.choices label{border-radius:10px;background:var(--surface)}
+.choices label:has(input:checked){border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.choices input{accent-color:var(--gold)}
+input[type=checkbox]{accent-color:var(--s1)}
+.note .ic{background:var(--forest)}
+:root[data-theme="dark"] .note .ic{background:var(--gold-soft);color:var(--forest)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .note .ic{background:var(--gold-soft);color:var(--forest)} }
+.tl .d{font-family:var(--ff-mono);font-weight:500;font-size:13px;color:var(--gold-deep)}
+:root[data-theme="dark"] .tl .d{color:var(--gold-soft)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tl .d{color:var(--gold-soft)} }
+.pill{font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.02em;border:1px solid var(--border);background:var(--bg)}
+.stagecard{background:var(--forest);border-color:var(--forest);color:#F5F2EA;
+  --s1:#249a70; --s2:#c47a2a; --s3:#4a8ac4; --s4:#b48a22; --s5:#c8668f; --s6:#6f9a2a; --s7:#8a76d6; --s8:#d4584d;}
+.stagecard h2{color:#F5F2EA;font-size:32px;font-weight:400}
+.stagecard .sub{color:var(--mist)}
+.stagecard .eyebrow{color:var(--gold-soft)!important}
+.stagecard .hero .a,.stagecard .muted{color:var(--mist)}
+.stagecard .splitbar{background:var(--forest)}
+.stagecard .callout{background:rgba(0,0,0,.2);color:var(--mist)} .stagecard .callout b{color:#F5F2EA}
+/* iPhone app layer */
+html{-webkit-text-size-adjust:100%;background:var(--forest)}
+body{-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none;min-height:100vh}
+header{padding-top:env(safe-area-inset-top)}
+.wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+main{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+#toast{bottom:calc(18px + env(safe-area-inset-bottom));max-width:calc(100vw - 32px);white-space:normal;text-align:center}
+nav{scrollbar-width:none} nav::-webkit-scrollbar{display:none}
+.btn,nav button,.wsteps li button{touch-action:manipulation}
+#offline{display:none;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);border:1px solid rgba(201,168,116,.4);border-radius:999px;padding:2px 8px}
+body.offline #offline{display:inline-block}
+.top h1{white-space:nowrap;min-width:0} .top h1 .mark{flex:none}
+@media (max-width:760px){
+  input,select{font-size:16px}
+  .top h1 .sub2{display:none}
+  .top h1{font-size:19px}
+  .tip{white-space:normal;max-width:240px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <h1><span class="mark">JM</span>My Money Plan<span class="sub2">Personal</span></h1>
+      <span id="offline">Offline</span><button class="btn sm" id="themeBtn">Theme</button>
+    </div>
+    <nav role="tablist">
+      <button role="tab" data-tab="interview" aria-selected="true">1. Interview</button>
+      <button role="tab" data-tab="plan">2. Your plan</button>
+      <button role="tab" data-tab="month">3. Paydays</button>
+      <button role="tab" data-tab="progress">4. Check-in &amp; progress</button>
+      <button role="tab" data-tab="backup">Settings &amp; backup</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="tab on" id="tab-interview">
+  <div class="wiz"><ol class="wsteps" id="wsteps"></ol><div class="card" id="wbody"></div></div>
+</section>
+<section class="tab" id="tab-plan"><div id="planBody"></div></section>
+<section class="tab" id="tab-month"><div id="monthBody"></div></section>
+<section class="tab" id="tab-progress"><div id="progBody"></div></section>
+<section class="tab" id="tab-backup">
+  <h2>Settings &amp; backup</h2>
+  <p class="sub">Your answers are saved on this phone, inside this app only. Nothing is sent anywhere, and it works without internet. Deleting the app from your home screen erases them, so export a backup now and then.</p>
+  <div class="callout" style="margin-bottom:12px"><b>Moving your data?</b> The home screen app, Safari, and your computer each keep their own copy and start empty. Export a backup where your data is now, then open the app and use Import backup. On iPhone, Export opens the share sheet, so pick "Save to Files".</div>
+  <div class="card">
+    <div class="row">
+      <button class="btn primary" id="exportBtn">Export backup</button>
+      <label class="btn">Import backup<input type="file" id="importFile" accept=".json,application/json" hidden></label>
+      <span class="sp"></span>
+      <button class="btn" id="resetBtn" style="color:var(--crit)">Erase everything</button>
+    </div>
+    <p class="small" id="saveStatus" style="margin:12px 0 0"></p>
+    <p class="small muted" id="lastBk" style="margin:4px 0 0"></p>
+  </div>
+  <div class="card mt">
+    <h3>Numbers the plan depends on</h3>
+    <p class="sub small">These change over time. When you update one, note the date so you know how fresh it is.</p>
+    <div id="cfgBody"></div>
+  </div>
+</section>
+</main>
+<div id="toast"></div><div class="tip" id="tip"></div>
+
+<script>
+(function(){
+"use strict";
+const KEY = "my-money-plan-v2";
+const uid = () => Math.random().toString(36).slice(2,10);
+const NOW = new Date(), NY = NOW.getFullYear(), NM = NOW.getMonth();
+const MN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const ymOf = i => { const d=new Date(NY,NM+i,1); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"); };
+const idxOf = ym => { if(!ym || !/^\d{4}-\d{2}$/.test(ym)) return null; const [y,m]=ym.split("-").map(Number); return (y-NY)*12 + (m-1-NM); };
+const mLabel = i => { const d=new Date(NY,NM+i,1); return MN[d.getMonth()]+" "+d.getFullYear(); };
+const ymLabel = ym => { const i=idxOf(ym); return i==null?"":mLabel(i); };
+const calM = i => new Date(NY,NM+i,1).getMonth()+1;
+const THIS = ymOf(0);
+
+const defaultCfg = () => ({
+  inflation:{v:7.2, asOf:"2026-09", src:"PSA, via Trading Economics", url:"https://tradingeconomics.com/philippines/inflation-cpi", byYou:false},
+  mp2:{v:7.12, asOf:"2025 dividend, announced Feb 2026", src:"Pag-IBIG Fund", url:"https://zbni.ph/2026/03/03/press-release-pag-ibig-fund-declares-record-p64-34b-dividends-for-2025-regular-savings-rate-rises-to-6-62-mp2-climbs-to-7-12/", byYou:false},
+  cardRate:36, theme:""
+});
+const blank = () => ({
+  v:3,
+  pay15:"", pay30:"", pmStart:"30", trackFrom:"2026-10-30", lastBackup:"", healthCover:"", lifeIns:"", payVaries:"no", extraPct:"20", paychecks:[], bufBal:"", seenSummary:"", job:"stable", dependents:"0", thirteenth:"", thirteenthMonth:"12",
+  side:[], bonuses:[], taxPct:"0",
+  bills:[], annual:[],
+  living:[{id:uid(),name:"Food & groceries",amount:""},{id:uid(),name:"Transport / gas",amount:""},{id:uid(),name:"Family support",amount:""},{id:uid(),name:"Toiletries & household",amount:""}],
+  debts:[], efBal:"", investBal:"", goals:[], wantPersonal:"", horizon:"10", drop:"wait",
+  paid:{}, spend:[], history:[], baseline:null,
+  cfg:defaultCfg(), visited:{}
+});
+function migrate(d){
+  const S2 = Object.assign(blank(), d||{});
+  const c = d && d.cfg || {};
+  S2.cfg = defaultCfg();
+  if(typeof c.inflation==="number" || typeof c.inflation==="string"){ if(n(c.inflation)!==7.2) S2.cfg.inflation = {...S2.cfg.inflation, v:n(c.inflation), byYou:true, src:"You", asOf:""}; }
+  else if(c.inflation) S2.cfg.inflation = Object.assign(S2.cfg.inflation, c.inflation);
+  if(typeof c.mp2==="number" || typeof c.mp2==="string"){ if(n(c.mp2)!==7.12) S2.cfg.mp2 = {...S2.cfg.mp2, v:n(c.mp2), byYou:true, src:"You", asOf:""}; }
+  else if(c.mp2) S2.cfg.mp2 = Object.assign(S2.cfg.mp2, c.mp2);
+  if(c.cardRate!=null) S2.cfg.cardRate = c.cardRate;
+  if(c.theme) S2.cfg.theme = c.theme;
+  ["bills","annual","living","debts","goals","side","bonuses","history","paychecks"].forEach(k=>{ if(!Array.isArray(S2[k])) S2[k]=[]; });
+  ["bills","annual","living","debts","goals","side","bonuses"].forEach(k=>S2[k].forEach(x=>{ if(!x.id) x.id=uid(); }));
+  // v2 -> v3: single "other income" field becomes a side income item
+  if(d && n(d.other)>0 && !(d.side&&d.side.length)){
+    S2.side.push({id:uid(), name:"Other income", amount:d.other, start:"", end:"", sure: d.otherSteady==="yes" ? "yes" : "no", cut:"30", taxed:"no"});
+  }
+  delete S2.other; delete S2.otherSteady;
+  // v2 otherSav goes onto first goal
+  if(d && n(d.otherSav)>0 && S2.goals[0]){ S2.goals[0].saved = String(n(S2.goals[0].saved)+n(d.otherSav)); }
+  delete S2.otherSav;
+  if(S2.job==="contract") S2.job="mixed";
+  // v2 spend entries were personal only, paid ticks were positional
+  S2.spend = (Array.isArray(S2.spend)?S2.spend:[]).map(s=>({id:s.id||uid(), date:s.date, cat:s.cat||"personal", amount:s.amount, note:s.note||""}));
+  if(S2.paid && Object.values(S2.paid).some(m=>m && Object.values(m).some(v=>v===true))) S2.paid = {};
+  S2.v = 3;
+  return S2;
+}
+let S, storageOk = true;
+try{ const raw=localStorage.getItem(KEY); S = raw ? migrate(JSON.parse(raw)) : blank(); }catch(e){ S = blank(); storageOk=false; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); storageOk=true; }catch(e){ storageOk=false; } status(); }
+function status(){ const lb=document.getElementById("lastBk"); if(lb) lb.textContent = S.lastBackup ? "Last backup: "+S.lastBackup : "No backup exported yet."; const el=$("#saveStatus"); el.textContent = storageOk ? "Saving automatically on this phone." : "Storage is blocked here, so your answers will be lost when you close the app. Export a backup."; el.style.color = storageOk ? "var(--text-2)" : "var(--crit)"; }
+
+function $(s){ return document.querySelector(s); }
+function n(v){ const x=parseFloat(v); return isFinite(x)?x:0; }
+const P = v => (n(v)<0?"−":"") + "₱" + Math.round(Math.abs(n(v))).toLocaleString("en-PH");
+const esc = s => String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const sum = (a,f) => a.reduce((t,x)=>t+n(f(x)),0);
+const pc = (a,b) => b>0 ? a/b*100 : 0;
+const pcs = (a,b) => Math.round(pc(a,b)) + "%";
+function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("on"),1800); }
+const cutOf = b => (b.cut==="15"||b.cut==="30") ? b.cut : (n(b.due)>=16 ? "15" : "30");
+const infl = () => n(S.cfg.inflation.v)/100;
+const cfgCite = k => { const c=S.cfg[k]; return c.byYou ? `updated by you${c.asOf?", "+esc(c.asOf):""}` : `${esc(c.src)}, ${esc(/^\d{4}-\d{2}$/.test(c.asOf)?ymLabel(c.asOf):c.asOf)}`; };
+
+/* ======================= INTERVIEW ======================= */
+const STEPS = [
+  {id:"pay", t:"Your salary"}, {id:"extra", t:"Side income & bonuses"}, {id:"bills", t:"Bills"},
+  {id:"living", t:"Living costs"}, {id:"debts", t:"Debts"}, {id:"have", t:"What you have now"},
+  {id:"goals", t:"Your goals"}, {id:"you", t:"About you"}
+];
+let W = 0;
+const NUM = 'type="number" min="0" step="0.01" inputmode="decimal"';
+function field(k, label, hint, attrs=NUM){ return `<div class="q"><label for="f_${k}">${label}</label>${hint?`<p class="hint">${hint}</p>`:""}<input id="f_${k}" ${attrs} data-k="${k}" value="${esc(S[k])}"></div>`; }
+function select(k, label, hint, opts){ return `<div class="q"><label for="f_${k}">${label}</label>${hint?`<p class="hint">${hint}</p>`:""}<select id="f_${k}" data-k="${k}">${opts.map(o=>`<option value="${o[0]}" ${String(S[k])===o[0]?"selected":""}>${o[1]}</option>`).join("")}</select></div>`; }
+function choices(k, label, hint, opts){ return `<div class="q"><span class="ql">${label}</span>${hint?`<p class="hint">${hint}</p>`:""}<div class="choices">${opts.map(o=>`<label><input type="radio" name="${k}" value="${o[0]}" data-k="${k}" ${String(S[k])===o[0]?"checked":""}><span>${o[1]}${o[2]?`<br><span class="muted small">${o[2]}</span>`:""}</span></label>`).join("")}</div></div>`; }
+const MONTHS = MN.map((m,i)=>[String(i+1), m]);
+function list(key, cols, addLabel){
+  return `<table class="lst"><thead><tr>${cols.map(c=>`<th>${c.h}</th>`).join("")}<th></th></tr></thead><tbody>${S[key].map((r,i)=>`<tr>${cols.map(c=>`<td data-l="${c.h}" class="${c.wide?"wide":""}">${c.sel?`<select data-l-k="${key}" data-i="${i}" data-f="${c.f}">${c.sel.map(o=>`<option value="${o[0]}" ${String(r[c.f])===o[0]?"selected":""}>${o[1]}</option>`).join("")}</select>`:`<input ${c.type==="text"?'type="text"':c.type==="month"?'type="month"':NUM} ${c.ph?`placeholder="${c.ph}"`:""} data-l-k="${key}" data-i="${i}" data-f="${c.f}" value="${esc(r[c.f])}">`}</td>`).join("")}<td><button class="btn x" data-rm="${key}" data-i="${i}" title="Remove">×</button></td></tr>`).join("")}</tbody></table>
+  <button class="btn sm" data-add="${key}" style="margin-top:8px">+ ${addLabel}</button>`;
+}
+const TPL = {
+  bills:()=>({id:uid(),name:"",amount:"",due:"",cut:"auto"}),
+  annual:()=>({id:uid(),name:"",amount:"",month:"1",saved:""}),
+  living:()=>({id:uid(),name:"",amount:""}),
+  debts:()=>({id:uid(),name:"",type:"card",balance:"",payment:"",end:"",rate:"",cut:"30"}),
+  goals:()=>({id:uid(),name:"",cost:"",date:"",saved:""}),
+  side:()=>({id:uid(),name:"",amount:"",start:THIS,end:"",sure:"yes",cut:"30",taxed:"no"}),
+  bonuses:()=>({id:uid(),name:"",amount:"",month:"12"})
+};
+function stepHTML(id){
+  switch(id){
+  case "pay": return `<h2>Your salary</h2><p class="say">Let's start with your regular job. Use take-home pay, what actually lands in your account after tax, SSS, PhilHealth and Pag-IBIG.</p>
+    ${choices("payVaries","Does your pay change from one cut-off to the next?","",[["yes","Yes, it depends on hours worked","Lates and absences lower it, overtime raises it"],["no","No, it's the same every time"]])}
+    ${select("pmStart","Your pay month runs from","Each pay month covers two paydays. A summary of the month appears when the next one starts.",[["30","The 30th (30th pay + the next 15th pay)"],["15","The 15th (15th pay + the 30th pay)"]])}
+    <div class="q"><label for="f_trackFrom">Start tracking from</label><p class="hint">Anything before this date is ignored. Use a payday you can track properly from the start.</p><input id="f_trackFrom" type="date" data-k="trackFrom" value="${esc(S.trackFrom)}"></div>
+    ${field("pay15","Baseline pay on the 15th", S.payVaries==="yes" ? "Use a slightly below-normal paycheck: a cut-off with a few lates and no overtime. This is what your budget is built on. Anything above it is treated as extra. After a few logged paychecks, the dashboard suggests a number." : "")}
+    ${field("pay30","Baseline pay on the 30th","")}
+    ${field("thirteenth","How much is your 13th-month pay?","Usually about one month's basic pay. It's tax-free up to ₱90,000. Leave blank if you don't get one.")}
+    ${select("thirteenthMonth","Which month do you usually receive it?","By law it's paid on or before December 24. Some companies pay half in May or June.",MONTHS)}
+    ${choices("job","Which best describes your income?","",[["stable","Regular employee, salary only"],["mixed","Regular employee plus freelance or contract work"],["unsure","Employee, but the job isn't fully secure (probationary, company changes)"],["freelance","Freelance or contract only"]])}
+    ${field("dependents","How many people depend on your income?","Parents, siblings, kids or a partner you support regularly.",'type="number" min="0" step="1"')}`;
+  case "extra": return `<h2>Side income &amp; bonuses</h2><p class="say">Contract work is handled differently from your salary. Signed contracts count in your budget only for the months they run. Work that isn't signed yet doesn't count until it's paid. When it arrives, it gets split by a rule.</p>
+    <h4>Freelance or contract income</h4>
+    <p class="hint">Enter the amount you'll actually keep each month, after whatever you set aside for tax yourself. "Signed" means you have a contract for those months.</p>
+    ${list("side",[{h:"Client / project",f:"name",type:"text",ph:"e.g. Monthly SEO retainer",wide:true},{h:"Per month",f:"amount"},{h:"Starts",f:"start",type:"month"},{h:"Ends",f:"end",type:"month"},{h:"Status",f:"sure",sel:[["yes","Signed contract"],["no","Not guaranteed"]]},{h:"Usually paid on",f:"cut",sel:[["30","Around the 30th"],["15","Around the 15th"]]}],"Add contract or side income")}
+    <h4>Yearly bonuses (other than 13th-month)</h4>
+    <p class="hint">Performance bonus, 14th month, anniversary pay. Amounts after tax.</p>
+    ${list("bonuses",[{h:"Bonus",f:"name",type:"text",ph:"e.g. Performance bonus",wide:true},{h:"Amount",f:"amount"},{h:"Usual month",f:"month",sel:MONTHS}],"Add bonus")}`;
+  case "bills": return `<h2>Bills</h2><p class="say">Now your fixed bills, the ones that come every month no matter what. Leave loan and credit card payments for the Debts step.</p>
+    <p class="hint">"Paid from" decides which payday covers it. Auto: due on the 16th to 31st comes from the 15th pay, due 1st to 15th comes from the 30th pay.</p>
+    ${list("bills",[{h:"Bill",f:"name",type:"text",ph:"e.g. Meralco",wide:true},{h:"Usual amount",f:"amount"},{h:"Due day",f:"due",ph:"1-31"},{h:"Paid from",f:"cut",sel:[["auto","Auto"],["15","15th pay"],["30","30th pay"]]}],"Add bill")}
+    <h4>Once-a-year costs</h4>
+    <p class="hint">Insurance premiums, car registration, tuition, annual subscriptions, birthday and Christmas gifts. The plan sets aside 1/12 every month, so these never catch you off guard.</p>
+    ${list("annual",[{h:"Cost",f:"name",type:"text",ph:"e.g. Car registration",wide:true},{h:"Amount per year",f:"amount"},{h:"Due month",f:"month",sel:MONTHS},{h:"Set aside so far",f:"saved"}],"Add yearly cost")}`;
+  case "living": return `<h2>Living costs</h2><p class="say">Everyday costs you can't skip but that change month to month. Give me an honest monthly estimate. These also become your spending categories in "This month".</p>
+    ${list("living",[{h:"Item",f:"name",type:"text",wide:true},{h:"Per month",f:"amount"}],"Add item")}
+    <p class="hint" style="margin-top:12px">Leave out wants like eating out, shopping and hobbies. Those come from your personal spending allowance, which the plan sets.</p>`;
+  case "debts": return `<h2>Debts</h2><p class="say">Every loan and credit card, even small ones. I need the total you still owe, what you pay each month, and when it ends.</p>
+    ${list("debts",[{h:"Name",f:"name",type:"text",ph:"e.g. BPI credit card",wide:true},{h:"Type",f:"type",sel:[["card","Credit card"],["loan","Installment loan"],["personal","Personal / salary loan"]]},{h:"Total still owed",f:"balance"},{h:"Monthly payment",f:"payment"},{h:"Final payment (month it ends)",f:"end",type:"month"},{h:"Interest %/yr",f:"rate",ph:"if known"},{h:"Paid from",f:"cut",sel:[["30","30th pay"],["15","15th pay"]]}],"Add debt")}
+    <p class="hint" style="margin-top:12px">Credit cards: enter what you plan to pay each month and leave "Final payment" blank, and the plan works out when it's cleared. Installment loans: enter the month of your very last scheduled payment, when the loan will be fully paid. You'll find it on your loan contract or statement.</p>`;
+  case "have": return `<h2>What you have now</h2><p class="say">What's already set aside. Only count money you could actually get to. After today, you'll update these in the monthly check-in.</p>
+    ${S.payVaries==="yes"?field("bufBal","Pay buffer","Money kept aside just to cover low paychecks. Leave blank if you don't have one yet."):""}
+    ${field("efBal","Savings you can withdraw within a day","Bank or digital bank savings, cash kept for emergencies. Don't include money saved for a specific goal or yearly cost, that goes in those steps.")}
+    ${field("investBal","Current value of your investments","MP2, stocks, funds, bonds. Leave blank if none.")}`;
+  case "goals": return `<h2>Your goals</h2><p class="say">What's the next thing you're saving for, and when do you want it? Put the most important one first. Use today's price, and the plan adds inflation.</p>
+    ${list("goals",[{h:"Goal",f:"name",type:"text",ph:"e.g. New laptop",wide:true},{h:"Cost today",f:"cost"},{h:"Want it by",f:"date",type:"month"},{h:"Saved so far",f:"saved"}],"Add goal")}
+    <div class="row" style="margin-top:10px">${S.goals.map((g,i)=>i?`<button class="btn sm" data-up="${i}">Move "${esc(g.name||"goal "+(i+1))}" up</button>`:"").join("")}</div>`;
+  case "you": return `<h2>About you</h2><p class="say">Last few questions. These decide how much you get to spend on yourself and how your investments are set up.</p>
+    ${field("wantPersonal","How much would you like to spend on yourself each month?","Eating out, shopping, hobbies, going out. I'll tell you if I think it fits.")}
+    ${choices("extraPct","When extra money comes in (overtime, contracts, bonuses), how much do you let yourself spend?","The rest goes straight to your plan. This is your guard against lifestyle creep.",[["10","10%","Strict. Fastest progress."],["20","20%","Recommended. Enough to enjoy a raise without letting it change your lifestyle."],["30","30%","Looser. Progress is slower."]])}
+    ${choices("healthCover","What health coverage do you have?","An advisor asks this before talking about investing. One hospital stay can wipe out an emergency fund.",[["hmo-work","HMO from work"],["hmo-own","HMO or health insurance I pay for myself"],["philhealth","PhilHealth only"],["none","None, or I'm not sure"]])}
+    ${n(S.dependents)>0?choices("lifeIns","Do you have life insurance?",`${n(S.dependents)} ${n(S.dependents)>1?"people depend":"person depends"} on your income. If something happened to you, what would they live on?`,[["term","Yes, term life insurance"],["vul","Yes, a VUL or other insurance-plus-investment plan"],["none","No"]]):""}
+    ${choices("horizon","When would you need the money you invest?","",[["2","Within 3 years"],["4","In 3 to 5 years"],["7","In 5 to 10 years"],["10","10 years or more"]])}
+    ${choices("drop","Your investments drop 30% in one bad year. What do you do?","This happened in 2008, 2020 and 2022. Be honest, the plan protects you either way.",[["sell","Sell, I can't take seeing it go down"],["wait","Wait it out"],["buy","Buy more while it's cheap"]])}`;
+  }
+}
+function renderWizard(){
+  $("#wsteps").innerHTML = STEPS.map((s,i)=>{ const ok = S.visited[s.id] && i!==W; return `<li class="${ok?"ok":""}"><button data-w="${i}" ${i===W?'aria-current="step"':""}><span class="n">${ok?"✓":i+1}</span><span class="lbl">${s.t}</span></button></li>`; }).join("");
+  $("#wbody").innerHTML = stepHTML(STEPS[W].id) + `<div class="wnav">${W>0?`<button class="btn" data-w="${W-1}">Back</button>`:""}<span class="sp"></span>${W<STEPS.length-1?`<button class="btn primary" data-w="${W+1}">Next</button>`:`<button class="btn primary" data-go="plan">See my plan</button>`}</div>`;
+}
+
+/* ======================= ENGINE ======================= */
+function activeAt(x, m){ const s=idxOf(x.start), e=idxOf(x.end); return (s==null || s<=m) && (e==null || m<=e); }
+function payLogs(cut){ return S.paychecks.filter(p=>p.kind==="salary"&&p.cut===cut&&n(p.amount)>0).sort((x,y)=>y.pm.localeCompare(x.pm)).slice(0,6); }
+function payExp(cut){ const L=payLogs(cut); return L.length>=2 ? sum(L,p=>p.amount)/L.length : null; }
+let BASEONLY = false;
+function baseAlloc(B){ BASEONLY = true; try{ return alloc(B, initState(B), 0); } finally { BASEONLY = false; } }
+function incomeAt(m){
+  // Budget = baseline salary only. Overtime above baseline, contracts, side work and bonuses are "extra".
+  const b15=n(S.pay15), b30=n(S.pay30), e15=BASEONLY?null:payExp("15"), e30=BASEONLY?null:payExp("30");
+  const r = {s15: e15==null ? b15 : Math.min(b15||e15, e15), s30: e30==null ? b30 : Math.min(b30||e30, e30), cGross:0, cNet:0, cTax:0, contracts:[], wind:[]};
+  const ot = (e15!=null?Math.max(0,e15-b15):0) + (e30!=null?Math.max(0,e30-b30):0);
+  if(ot>0.5 && b15+b30>0) r.wind.push({name:"Pay above your baseline (average)", g:ot, tax:0, net:ot, kind:"ot"});
+  S.side.forEach(x=>{
+    if(n(x.amount)<=0 || !activeAt(x,m)) return;
+    const g=n(x.amount);
+    r.wind.push({name:x.name||(x.sure==="yes"?"Contract":"Side income"), g, tax:0, net:g, kind: x.sure==="yes" ? "contract" : "side"});
+  });
+  if(n(S.thirteenth)>0 && calM(m)===n(S.thirteenthMonth)) r.wind.push({name:"13th-month pay", g:n(S.thirteenth), tax:0, net:n(S.thirteenth), kind:"bonus"});
+  S.bonuses.forEach(b=>{ if(n(b.amount)>0 && calM(m)===n(b.month)) r.wind.push({name:b.name||"Bonus", g:n(b.amount), tax:0, net:n(b.amount), kind:"bonus"}); });
+  return r;
+}
+function base(){
+  const bills = sum(S.bills,b=>b.amount), living = sum(S.living,l=>l.amount);
+  const sink = sum(S.annual,a=>a.amount)/12;
+  const cardRate = n(S.cfg.cardRate)||36;
+  const debts = S.debts.filter(d=>n(d.balance)>0||n(d.payment)>0).map(d=>{
+    const rate = (d.rate!==""&&d.rate!=null) ? n(d.rate) : (d.type==="card" ? cardRate : 0);
+    let left = null;
+    if(d.type!=="card"){ const e=idxOf(d.end); left = e!=null ? e+1 : (n(d.payment)>0 ? Math.ceil(n(d.balance)/n(d.payment)) : 0); left=Math.max(0,left); }
+    return {id:d.id, name:d.name||"Debt", type:d.type, bal:n(d.balance), pay:n(d.payment), rate, rateGuess:(d.rate===""||d.rate==null)&&d.type==="card", left, cut:d.cut||"30"};
+  });
+  const activeDebt = debts.filter(d=>d.type==="card"?d.bal>0:d.left>0);
+  const debtPay = sum(activeDebt,d=>d.pay);
+  const needs = bills + living;
+  const essential = needs + sink + debtPay;
+  const dep = n(S.dependents);
+  let efM = 3, efWhy = "you have a regular salary and no one depending on your income";
+  if(S.job==="freelance"){ efM = 9; efWhy = "all your income is freelance or contract, so a dry spell is more likely"; }
+  else if(S.job==="mixed"){ efM = 6; efWhy = "part of your income comes from contracts that can end"; }
+  else if(S.job==="unsure"){ efM = 6; efWhy = "your job isn't fully secure yet"; }
+  if(dep>0 && efM<6){ efM = 6; efWhy = `${dep} ${dep>1?"people depend":"person depends"} on your income`; }
+  else if(dep>0) efWhy += `, and ${dep} ${dep>1?"people depend":"person depends"} on you`;
+  const bufTarget = S.payVaries==="yes" ? (n(S.pay15)+n(S.pay30))/4 : 0;
+  return {bills, living, needs, sink, debts, debtPay, essential, efM, efWhy, efTarget:essential*efM, bufTarget, risk:riskProfile()};
+}
+function riskProfile(){
+  const hz = n(S.horizon), dr = S.drop;
+  if(hz<3) return {k:"short", why:"you need the money within 3 years. Stocks can fall 30% and take years to recover, and MP2 locks money for 5 years, so neither fits."};
+  if(dr==="sell"){
+    if(hz<5) return {k:"short", why:"you'd sell in a crash and need the money within 5 years. That combination means no stocks and no MP2 lock-in."};
+    return {k:"safe", why:"you said you'd sell in a crash. Selling after a drop turns a temporary loss into a real one, so stocks stay small no matter how long your timeframe is."};
+  }
+  if(hz<5) return {k:"conservative", why:"you need the money in 3 to 5 years. That's shorter than MP2's 5-year lock and too short for much stock exposure."};
+  const score = (hz>=10?3:2) + (dr==="buy"?2:1);
+  return score>=4 ? {k:"growth", why:"you have a long timeframe and wouldn't panic-sell in a crash."} : {k:"balanced", why:"you can wait out bad years, and your timeframe is 5 to 10 years."};
+}
+const PERSONAL = {short:0, buffer:.10, starter:.10, debt:.10, ef:.15, invest:.20};
+function goalCostAt(g, m){ return g.cost*Math.pow(1+infl(), Math.max(0,m)/12); }
+function goalNeed(g, m){
+  if(g.done!=null) return 0;
+  const dl = g.dl;
+  if(dl==null){ return Math.max(0, goalCostAt(g, m+12)-g.saved)/12; }
+  if(m>=dl) return Math.max(0, goalCostAt(g,m)-g.saved);
+  return Math.max(0, goalCostAt(g,dl)-g.saved)/(dl-m+1);
+}
+function alloc(B, st, m){
+  const inc = incomeAt(m);
+  const active = st.debts.filter(d=> d.type==="card" ? d.bal>0.5 : d.left>0);
+  const debtReq = sum(active, d=> d.type==="card" ? Math.min(d.pay, d.bal*(1+d.rate/1200)) : d.pay);
+  const baseInc = inc.s15 + inc.s30 + inc.cNet;
+  const A = baseInc - B.needs - B.sink - debtReq;
+  const cards = active.filter(d=>d.type==="card");
+  let stage;
+  if(A<=0) stage="short";
+  else if(st.buf < B.bufTarget) stage="buffer";
+  else if(st.ef < B.essential) stage="starter";
+  else if(cards.length) stage="debt";
+  else if(st.ef < B.efTarget) stage="ef";
+  else stage="invest";
+  const r = {m, stage, A, inc, gross:inc.s15+inc.s30+inc.cGross, tax:inc.cTax, baseInc, needs:B.needs, sink:B.sink, debtReq, extra:0, personal:0, ef:0, goals:0, invest:0, buf:0};
+  if(stage==="short") return r;
+  r.personal = Math.min(baseInc*PERSONAL[stage], A*0.4);
+  const R = A - r.personal;
+  const gNeed = sum(st.goals, g=>goalNeed(g,m));
+  if(stage==="buffer") r.buf = R;
+  else if(stage==="starter") r.ef = R;
+  else if(stage==="debt"){ r.extra = R*0.7; r.ef = R*0.3; }
+  else if(stage==="ef"){ r.goals = Math.min(gNeed, R*0.4); r.ef = R - r.goals; }
+  else { r.goals = Math.min(gNeed, R*0.4); r.invest = R - r.goals; }
+  return r;
+}
+const xPct = () => Math.min(0.5, Math.max(0, n(S.extraPct||20)/100));
+function windSplit(stage, amt, gNeedLeft){
+  const w = {personal:amt*xPct(), ef:0, extra:0, goals:0, invest:0, buf:0};
+  const rest = amt - w.personal;
+  if(stage==="buffer") w.buf = rest;
+  else if(stage==="debt") w.extra = rest;
+  else if(stage==="invest"){ w.goals = Math.min(rest*0.4, Math.max(0,gNeedLeft)); w.invest = rest - w.goals; }
+  else w.ef = rest;
+  return w;
+}
+const WTARGET = {buffer:"your pay buffer", short:"your emergency fund (and covering the monthly gap)", starter:"your emergency fund", debt:"paying down your credit card", ef:"your emergency fund", invest:"investing and your goals"};
+function initState(B){
+  return {
+    ef:n(S.efBal), invested:n(S.investBal), buf:n(S.bufBal),
+    debts:B.debts.map(d=>({...d})),
+    goals:S.goals.filter(g=>n(g.cost)>0).map((g,i)=>({id:g.id, name:g.name||"Goal "+(i+1), cost:n(g.cost), saved:n(g.saved), saved0:n(g.saved), dl:idxOf(g.date), date:g.date, done:null}))
+  };
+}
+function snap(st){ return {ef:st.ef, debt:sum(st.debts,d=>d.type==="card"?d.bal:(d.left>0?d.bal:0)), invest:st.invested, goals:sum(st.goals,g=>g.saved)}; }
+function simulate(B){
+  const st = initState(B);
+  st.goals.forEach(g=>{ if(g.saved>=g.cost) g.done=-1; });
+  const ev = [], traj = [snap(st)], allocs = [], winds = [];
+  let prevStage = null;
+  S.side.forEach(x=>{ if(x.sure==="yes" && n(x.amount)>0){ const e=idxOf(x.end); if(e!=null && e>=0) ev.push({m:e+1, type:"contractEnd", x}); } });
+  for(let m=0; m<240; m++){
+    const a = alloc(B, st, m); allocs.push(a);
+    if(a.stage!==prevStage){ ev.push({m, type:"stage", stage:a.stage, a}); prevStage=a.stage; }
+    // windfalls (not-guaranteed side income counted at 50% in projections)
+    const wTot = sum(a.inc.wind, w=> w.kind==="side" ? w.net*0.5 : w.net);
+    const gLeft = sum(st.goals,g=>goalNeed(g,m)) - a.goals;
+    const ws = windSplit(a.stage, wTot, gLeft);
+    if(a.inc.wind.length) winds.push({m, a, items:a.inc.wind, split:windSplit(a.stage, sum(a.inc.wind,w=>w.net), gLeft)});
+    // debts
+    let extra = a.extra + ws.extra;
+    st.debts.filter(d=>d.type==="card" && d.bal>0.5).sort((x,y)=>y.rate-x.rate).forEach(d=>{
+      d.bal = d.bal*(1+d.rate/1200) - d.pay;
+      if(d.bal>0 && extra>0){ const e=Math.min(extra,d.bal); d.bal-=e; extra-=e; }
+      if(d.bal<=0.5){ d.bal=0; ev.push({m,type:"debt",d}); }
+    });
+    st.debts.filter(d=>d.type!=="card" && d.left>0).forEach(d=>{ d.left--; d.bal=Math.max(0,d.bal-d.pay); if(d.left===0) ev.push({m,type:"debt",d}); });
+    const bb = st.buf; st.buf += a.buf + ws.buf;
+    if(bb < B.bufTarget && st.buf >= B.bufTarget) ev.push({m,type:"bufDone"});
+    // emergency fund (leftover extra once cards are gone also lands here)
+    const before = st.ef;
+    st.ef += a.ef + ws.ef + extra;
+    if(before < B.essential && st.ef >= B.essential && B.essential>0) ev.push({m,type:"starter"});
+    if(before < B.efTarget && st.ef >= B.efTarget && B.efTarget>0) ev.push({m,type:"efFull"});
+    // goals, priority order
+    let g$ = a.goals + ws.goals;
+    st.goals.forEach(g=>{ if(g.done!=null) return; const need=Math.max(goalNeed(g,m), 0); const give=Math.min(g$, Math.max(need, 0), Math.max(0,goalCostAt(g,m)-g.saved)); g.saved+=give; g$-=give; if(g.saved >= goalCostAt(g,m)-0.5){ g.done=m; ev.push({m,type:"goal",g}); } });
+    st.invested += a.invest + ws.invest + g$;
+    traj.push(snap(st));
+    const allDone = st.debts.every(d=>d.type==="card"?d.bal<=0.5:d.left<=0) && st.ef>=B.efTarget && st.goals.every(g=>g.done!=null);
+    if(m>=60 && allDone) break;
+  }
+  ev.sort((x,y)=>x.m-y.m);
+  return {first:allocs[0], allocs, ev, st, traj, winds};
+}
+
+/* ======================= PLAN VIEW ======================= */
+const BK = [
+  ["needs","Bills & living","--s1"],["debt","Debt","--s2"],["personal","Personal spending","--s3"],["ef","Emergency fund","--s4"],
+  ["buf","Pay buffer","--s4"],["goals","Goals","--s5"],["invest","Investing","--s6"],["sink","Yearly costs (set aside)","--s7"]
+];
+function renderPlan(){
+  const el = $("#planBody");
+  const B = base();
+  if(n(S.pay15)+n(S.pay30)+sum(S.side.filter(x=>x.sure==="yes"),x=>x.amount)<=0){ el.innerHTML = `<div class="card"><h2>Your plan</h2><p class="sub">I need your pay first. Start with the <a href="#" data-go="interview">Interview</a>.</p></div>`; return; }
+  const sim = simulate(B), a = baseAlloc(B), I = a.gross;
+  const val = {needs:a.needs, debt:a.debtReq+a.extra, personal:a.personal, ef:a.ef, buf:a.buf, goals:a.goals, invest:a.invest, sink:a.sink};
+  const ks = BK.filter(b=>val[b[0]]>0.5);
+  const cards = B.debts.filter(d=>d.type==="card"&&d.bal>0);
+  const topCard = cards.slice().sort((x,y)=>y.rate-x.rate)[0];
+  const starterEv = sim.ev.find(e=>e.type==="starter");
+  const T = {buffer:"Build your pay buffer", short:"Fix the gap first", starter:"Build a starter safety net", debt:"Pay off the credit card", ef:"Finish your emergency fund", invest:"Grow your money"};
+  const D = {
+    short:`Your bills, living costs and debt payments add up to more than your baseline pay. Nothing else works until this is fixed.`,
+    buffer:`Your pay changes with the hours you work. Before anything else, set aside about half a paycheck (${P(B.bufTarget)}) as a pay buffer. When a cut-off comes in low because of lates or absences, the gap comes from here, not from the card or your emergency fund.`,
+    starter: topCard ? `You have a credit card at about ${Math.round(topCard.rate)}% a year, and I know paying it off beats everything else. But without one month of essentials (${P(B.essential)}) in cash, the next surprise bill goes right back on the card, and you end up paying for it twice. So the safety net comes first${starterEv?`, which takes until about ${mLabel(starterEv.m)}`:""}. After that, most of your spare money goes to the card.` : `Before anything else, save one month of essential costs (${P(B.essential)}) so a surprise bill doesn't push you into debt.`,
+    debt:`Your credit card charges about ${topCard?Math.round(topCard.rate):36}% a year. Paying it off is a guaranteed return no investment can match, so most of your spare money goes there.`,
+    ef:`Your debts are under control. Now finish your safety net: ${B.efM} months of essentials (${P(B.efTarget)}).`,
+    invest:`Bills are covered, high-interest debt is gone and your safety net is full. Now your spare money goes to work.`
+  };
+  let h = `<div class="card stagecard">
+    <div class="eyebrow">Your current stage</div><h2>${T[a.stage]}</h2>
+    <p class="sub" style="margin:4px 0 14px">${D[a.stage]}</p>
+    <div class="eyebrow" style="margin-bottom:8px">How your ${P(I)} baseline monthly pay should be split (${mLabel(0)})</div>
+    <div class="splitbar" role="img" aria-label="Income split">${ks.map(b=>`<i style="--c:var(${b[2]});flex:${val[b[0]]}" data-tip="${b[1]}: ${pcs(val[b[0]],I)} · ${P(val[b[0]])}"></i>`).join("")}</div>
+    <div class="hero">${ks.map(b=>`<div class="b" style="--c:var(${b[2]})"><div class="p">${pcs(val[b[0]],I)}</div><div class="l">${b[1]}</div><div class="a">${P(val[b[0]])} / month</div></div>`).join("")}</div>
+    ${a.stage==="short"?`<div class="callout bad" style="margin-top:14px"><b>Short by ${P(-a.A)} a month.</b> See the notes below for where to cut.</div>`:""}
+    <p class="muted small" style="margin:12px 0 0">Based on your baseline KDCI pay only. Overtime, contracts and bonuses never raise this split. They follow the "extra money" rule below.</p>
+  </div>`;
+  h += `<div class="grid g2 mt">${paydayCards(B,a)}</div>`;
+  h += windCard(B, sim);
+  h += `<div class="grid g2 mt">
+    <div class="card"><h3>Advisor notes</h3>${notes(B,sim)}</div>
+    <div class="card"><h3>Your timeline</h3><p class="muted small" style="margin:-4px 0 10px">Starting ${mLabel(0)}. When a step is done, its money moves to the next step automatically. Projections use your average logged pay, signed contracts in full and unsigned side work at half.</p>${timeline(B,sim)}</div>
+  </div>
+  <div class="grid g2 mt">
+    <div class="card"><h3>Health check</h3>${bench(a)}</div>
+    <div class="card"><h3>Investment plan</h3>${investCard(B,sim)}</div>
+  </div>
+  <p class="muted small" style="margin-top:14px">This is a planning tool built from general financial planning rules, not licensed financial advice. Check current rates before you invest.</p>`;
+  el.innerHTML = h;
+}
+function paydayData(B,a){
+  const pay = {"15":a.inc.s15, "30":a.inc.s30};
+  const fixed = {"15":[], "30":[]};
+  S.bills.forEach(b=>{ if(n(b.amount)>0) fixed[cutOf(b)].push({k:"needs", id:"bill:"+b.id, t:esc(b.name||"Bill"), v:n(b.amount), due:b.due, tick:true}); });
+  B.debts.filter(d=>d.type==="card"?d.bal>0:d.left>0).forEach(d=>fixed[d.cut].push({k:"debt", id:"debt:"+d.id, t:esc(d.name)+" payment", v:d.pay, tick:true}));
+  ["15","30"].forEach(c=>{ if(B.living>0) fixed[c].push({k:"needs", id:"living:"+c, t:"Living costs (half)", v:B.living/2}); if(B.sink>0) fixed[c].push({k:"sink", id:"sink:"+c, t:"→ Yearly costs fund (half)", v:B.sink/2, tick:true}); });
+  const free = {"15":pay["15"]-sum(fixed["15"],x=>x.v), "30":pay["30"]-sum(fixed["30"],x=>x.v)};
+  const carry = {"15":0, "30":0};
+  ["15","30"].forEach(c=>{ const o = c==="15"?"30":"15"; if(free[c]<0 && free[o]>0){ const t=Math.min(-free[c], free[o]); carry[c]+=t; carry[o]-=t; } });
+  ["15","30"].forEach(c=>{ const o = c==="15"?"30":"15"; if(carry[c]<-0.5) fixed[c].push({k:"carry", id:"carry:"+c, t:`→ Keep for the ${o}th pay's bills`, v:-carry[c], tick:true}); });
+  const avail = {"15":Math.max(0,free["15"]+carry["15"]), "30":Math.max(0,free["30"]+carry["30"])};
+  const tot = avail["15"]+avail["30"];
+  const out = {};
+  // personal allowance: same amount each payday where possible; savings take the rest in proportion
+  const pers = {"15":Math.min(a.personal/2, avail["15"]), "30":Math.min(a.personal/2, avail["30"])};
+  ["15","30"].forEach(c=>{ const o=c==="15"?"30":"15"; const gap=a.personal/2-pers[o]; if(gap>0) pers[c]=Math.min(avail[c], pers[c]+gap); });
+  const rest = {"15":avail["15"]-pers["15"], "30":avail["30"]-pers["30"]}, rt = rest["15"]+rest["30"];
+  ["15","30"].forEach(c=>{ const sh = rt>0 ? rest[c]/rt : 0; const f={personal:pers[c]}; FLEX.forEach(k=>{ if(k[0]!=="personal") f[k[0]]=(a[k[0]]||0)*sh; }); out[c]={pay:pay[c], fixed:fixed[c], flex:f, carryIn:carry[c]>0.5?carry[c]:0}; });
+  return out;
+}
+const FLEX = [["personal","Personal spending (yours to enjoy)","--s3"],["buf","→ Pay buffer","--s4"],["ef","→ Emergency fund","--s4"],["extra","→ Extra credit card payment","--s2"],["goals","→ Goals","--s5"],["invest","→ Investments","--s6"]];
+const FCOL = {needs:"--s1", debt:"--s2", sink:"--s7", carry:"--muted"};
+function paydayCards(B,a){
+  const pd = paydayData(B,a);
+  return ["15","30"].map(c=>{
+    const o = c==="15"?"30":"15", D = pd[c];
+    const rows = D.fixed.map(x=>`<tr><td><span class="sw" style="--c:var(${FCOL[x.k]})"></span>${x.t}</td><td class="num">${P(x.v)}</td></tr>`).join("")
+      + FLEX.filter(f=>D.flex[f[0]]>0.5).map(f=>`<tr><td><span class="sw" style="--c:var(${f[2]})"></span>${f[1]}</td><td class="num">${P(D.flex[f[0]])}</td></tr>`).join("");
+    const left = D.pay + D.carryIn - sum(D.fixed,x=>x.v) - sum(FLEX,f=>D.flex[f[0]]);
+    return `<div class="card"><div class="row"><h3 style="margin:0">On the ${c}th</h3><span class="sp"></span><b class="num">${P(D.pay)}</b></div>
+      <p class="muted small" style="margin:2px 0 0">Planned at your baseline pay. Log the real amount in Paydays and it recalculates.</p>
+      ${D.carryIn>0.5?`<p class="small" style="margin:6px 0 0">Plus <b>${P(D.carryIn)}</b> kept from the ${o}th pay, because this payday can't cover its own bills.</p>`:""}
+      <table style="margin-top:8px">${rows}${Math.abs(left)>0.5?`<tr><td>${left<0?"Short":"Unassigned"}</td><td class="num" style="color:${left<0?"var(--crit)":"inherit"}">${P(left)}</td></tr>`:""}</table></div>`;
+  }).join("");
+}
+function windCard(B, sim){
+  const a = sim.first;
+  const up = sim.winds.filter(w=>w.m<12).map(w=>({...w, items:w.items.filter(x=>x.kind==="bonus")})).filter(w=>w.items.length).map(w=>({...w, split:windSplit(w.a.stage, sum(w.items,x=>x.net), Infinity)}));
+  const unsigned = S.side.filter(x=>x.sure!=="yes" && n(x.amount)>0);
+  const signed = S.side.filter(x=>x.sure==="yes" && n(x.amount)>0 && (idxOf(x.end)==null || idxOf(x.end)>=0));
+  const k = Math.round(xPct()*100), r = 100-k;
+  const ot = a.inc.wind.find(x=>x.kind==="ot");
+  return `<div class="card mt"><h3>When extra money comes in</h3>
+    <p class="sub small" style="margin-bottom:10px">13th-month pay, bonuses and side income that isn't signed yet stay out of your monthly budget. When it arrives, split it: <b>${k}% for you to enjoy, ${r}% to ${WTARGET[a.stage]}</b>. The ${r}% target changes as you move through the plan. This is what keeps a raise in income from turning into a raise in spending.</p>
+    ${signed.length?`<p class="small" style="margin:0 0 8px">Signed contracts: ${signed.map(x=>`<b>${esc(x.name||"Contract")}</b> ${P(x.amount)}/month${x.end?` until ${ymLabel(x.end)}`:""} → ${P(n(x.amount)*k/100)} for you, ${P(n(x.amount)*r/100)} to the plan`).join("; ")}.</p>`:""}
+    ${ot?`<p class="small" style="margin:0 0 8px">Overtime: your logged paychecks average ${P(ot.net)} a month above your baseline. Same rule: ${k}% for you, ${r}% to the plan.</p>`:""}
+    ${unsigned.length?`<p class="small" style="margin:0 0 10px">Unsigned side income: ${unsigned.map(x=>`<b>${esc(x.name||"Side income")}</b> (about ${P(x.amount)}/month)`).join(", ")}. Whenever it comes in, same rule. Your timeline assumes only half of it shows up.</p>`:""}
+    ${up.length?`<div class="tscroll"><table><tr><th>When</th><th>What</th><th class="num">Amount</th><th class="num">For you</th><th>The rest goes to</th></tr>${up.map(w=>{ const net=sum(w.items,x=>x.net); const tgt = w.split.buf>0.5?"Pay buffer":w.split.extra>0.5?"Credit card":w.split.invest>0.5?"Investing"+(w.split.goals>0.5?" + goals":""):"Emergency fund"; return `<tr><td>${mLabel(w.m)}</td><td>${w.items.map(x=>esc(x.name)).join("<br>")}</td><td class="num">${P(net)}</td><td class="num">${P(w.split.personal)}</td><td>${tgt} <span class="muted small">${P(net-w.split.personal)}</span></td></tr>`; }).join("")}</table></div>`:(unsigned.length?"":`<div class="empty">No 13th-month pay or bonuses in the next 12 months. Add them in the Interview, steps 1 and 2.</div>`)}
+  </div>`;
+}
+function notes(B,sim){
+  const a = sim.first, I = a.gross, N = [];
+  const add = (type,title,body) => N.push(`<div class="note ${type}"><span class="ic">${type==="good"?"✓":type==="info"?"i":"!"}</span><div><b>${title}</b><p>${body}</p></div></div>`);
+  const needsP = pc(a.needs+a.sink, I), debtP = pc(a.debtReq, I);
+  if(a.stage==="short"){
+    const big = S.living.concat(S.bills).filter(x=>n(x.amount)>0).sort((x,y)=>n(y.amount)-n(x.amount)).slice(0,3).map(x=>`${esc(x.name)} (${P(x.amount)})`).join(", ");
+    add("bad",`You're spending ${P(-a.A)} a month more than your regular income`, `Your biggest costs are ${big}. Cut there first. If a loan is the problem, ask the lender about restructuring before you miss a payment. Don't take a new loan to cover this, and don't count on unsigned side work to close the gap.`);
+  }
+  if(needsP>50) add("warn",`Bills, living and yearly costs take ${Math.round(needsP)}% of your income`, `The usual ceiling is 50%. Above that, there's little room for savings and any surprise hurts. Rent, family support and subscriptions are where people usually find room.`);
+  else if(a.needs>0) add("good",`Bills, living and yearly costs are ${Math.round(needsP)}% of your income`, `That's within the 50% guideline.`);
+  if(debtP>20) add("warn",`Debt payments take ${Math.round(debtP)}% of your income`, `Planners get worried above 20%, and above 36% it's a danger zone. Don't take on new loans until this drops.`);
+  const cards = B.debts.filter(d=>d.type==="card" && d.bal>0);
+  if(cards.length){
+    const intr = sum(cards,d=>d.bal*d.rate/1200);
+    add("bad",`Your credit card${cards.length>1?"s cost":" costs"} about ${P(intr)} a month in interest`, `That's money paying for nothing. Stop using the card for new purchases until it's cleared.${cards.some(d=>d.rateGuess)?` I assumed ${S.cfg.cardRate}% a year because you didn't enter a rate. Check your statement.`:""}`);
+    cards.forEach(d=>{ if(d.pay <= d.bal*d.rate/1200) add("bad",`${esc(d.name)}: your payment doesn't cover the interest`, `At ${P(d.pay)} a month the balance never goes down. Pay more than ${P(d.bal*d.rate/1200)} a month.`); });
+  }
+  // extra income and lifestyle creep
+  const k = Math.round(xPct()*100);
+  if(S.side.some(x=>n(x.amount)>0) || S.payVaries==="yes" || n(S.thirteenth)>0 || S.bonuses.length)
+    add("info",`More income won't raise your lifestyle`, `Your personal allowance is set from your baseline KDCI pay only. From overtime, contracts and bonuses you keep ${k}%, and the rest goes to your plan. If your income doubles, your spending doesn't, your savings do.`);
+  sim.ev.filter(e=>e.type==="contractEnd").slice(0,3).forEach(e=>{
+    add("info",`${esc(e.x.name||"Contract")} ends ${mLabel(e.m-1)}`, `Nothing in your monthly budget changes, because contract money was never part of it. Only your timeline slows down a little. If the contract gets renewed, update its end date. Still, don't take on fixed costs like a car loan or a bigger rent on contract income.`);
+  });
+  if(S.payVaries==="yes") add("info",`Your pay buffer: ${P(B.bufTarget)}`, `About half a paycheck, kept apart from your emergency fund. When a cut-off comes in low, the gap comes from here. Refill it from the next good paycheck.`);
+  sim.ev.filter(e=>e.type==="debt" && e.d.type!=="card").slice(0,3).forEach(e=>{
+    add("info",`${esc(e.d.name)} ends ${mLabel(e.m)}`, `That frees up ${P(e.d.pay)} a month. The plan moves it to your next step automatically, so it doesn't disappear into spending.`);
+  });
+  // protection
+  const dep = n(S.dependents);
+  if(S.healthCover==="philhealth" || S.healthCover==="none") add("warn",`Your health coverage is thin`, `${S.healthCover==="none"?"Without coverage":"PhilHealth covers only part of a hospital bill"}, so one hospital stay can wipe out your emergency fund and send you back to the card. Ask KDCI HR whether an HMO is available, or price an individual HMO plan. Put the yearly premium under Once-a-year costs so the plan budgets for it.`);
+  else if(S.healthCover==="hmo-work") add("info",`Your HMO comes from work`, `It stops if you leave KDCI, so check what it covers and whether you can add the people who depend on you.${S.side.some(x=>n(x.amount)>0)?" Your freelance clients won't give you one, so this matters even more if you move to contract work.":""}`);
+  if(dep>0 && S.lifeIns==="none") add("warn",`No life insurance, and ${dep} ${dep>1?"people depend":"person depends"} on you`, `A term life policy covers your family for a set number of years and is usually the cheapest way to protect them. Compare quotes from a few insurers. Put the yearly premium under Once-a-year costs.`);
+  else if(dep>0 && S.lifeIns==="vul") add("info",`You have a VUL`, `A VUL mixes insurance and investing, and the fees are usually higher than buying term insurance and investing separately. Before adding more to it, ask your agent for the total charges and the surrender penalty. Don't cancel it without checking those first.`);
+  if(!S.healthCover) add("info",`Tell me about your insurance`, `Answer the health coverage question in the Interview's last step. Protection comes before investing.`);
+  add("info",`Emergency fund target: ${B.efM} months (${P(B.efTarget)})`, `I picked ${B.efM} months because ${B.efWhy}. Keep it in a separate savings account you can withdraw from the same day, like a digital bank. Not in stocks, and not in MP2, which locks money for 5 years.`);
+  if(B.sink>0) add("info",`Yearly costs: set aside ${P(B.sink)} a month`, `That covers ${S.annual.filter(x=>n(x.amount)>0).map(x=>esc(x.name)+" ("+MN[n(x.month)-1]+")").join(", ")}. Keep it apart from your emergency fund. A bill you know is coming isn't an emergency.`);
+  const want = n(S.wantPersonal);
+  if(want>0 && a.stage!=="short"){
+    const later = sim.ev.find(e=>e.type==="stage" && e.m>0 && e.a.personal>a.personal+0.5);
+    if(want > a.personal+0.5) add("warn",`You asked for ${P(want)} a month for yourself. I'd keep it at ${P(a.personal)} for now`, `Every extra peso there right now delays ${a.stage==="debt"?"clearing your credit card":"your safety net"}. ${later?`From ${mLabel(later.m)} your allowance goes up to ${P(later.a.personal)}. `:""}You also keep ${k}% of every bonus, overtime and contract payment to enjoy.`);
+    else add("good",`Your personal spending request fits`, `You asked for ${P(want)} and the plan allows ${P(a.personal)}. Whatever you don't spend, put in your emergency fund.`);
+  }
+  const inf = infl();
+  sim.st.goals.forEach(g=>{
+    if(g.done===-1) return;
+    const ev = sim.ev.find(e=>e.type==="goal" && e.g===g);
+    const costDl = g.dl!=null ? goalCostAt(g, g.dl) : null;
+    const inflTxt = costDl && inf>0 ? ` At ${(inf*100).toFixed(1)}% inflation, ${P(g.cost)} today is about ${P(costDl)} by ${mLabel(g.dl)}.` : "";
+    if(!ev) add("warn",`${esc(g.name)}: not reachable within 20 years at this pace`, `Lower the cost, push the date, or increase income.`);
+    else if(g.dl!=null && ev.m > g.dl) add("warn",`${esc(g.name)}: realistic date is ${mLabel(ev.m)}, not ${mLabel(g.dl)}`, `To hit your date you'd need about ${P(Math.max(0,costDl-g.saved0)/Math.max(1,g.dl+1))} a month.${inflTxt} ${a.stage==="starter"||a.stage==="debt"||a.stage==="short"?"Right now spare money goes to your safety net and debt first, which is the right order.":"The plan caps goals at 40% of spare money so your safety net and investing don't stall."} You can lower the cost, push the date, or put bonuses toward it.`);
+    else add("good",`${esc(g.name)}: on track for ${mLabel(ev.m)}`, `That's on or before the date you wanted.${inflTxt}`);
+  });
+  const saveRate = pc(a.ef+a.goals+a.invest+a.extra, I);
+  if(a.stage!=="short") add(saveRate>=20?"good":"info",`You're putting ${Math.round(saveRate)}% of your income toward your future`, saveRate>=20?`That's at or above the 20% guideline.`:`The guideline is 20% or more. You get closer as debts end and bonuses come in.`);
+  return N.join("");
+}
+function timeline(B,sim){
+  const out = [], seen = new Set();
+  const SL = {buffer:"Pay buffer phase", starter:"Starter safety net phase", debt:"Credit card payoff phase", ef:"Emergency fund phase", short:"Budget falls short"};
+  sim.ev.forEach(e=>{
+    let t="";
+    if(e.type==="stage" && e.m>0) t = e.stage==="invest" ? `<b>Investing starts.</b> ${P(e.a.invest)}/month` : `${SL[e.stage]}. Personal spending: ${P(e.a.personal)}/month`;
+    else if(e.type==="starter") t = `<b>Starter safety net done</b> (1 month of essentials)`;
+    else if(e.type==="bufDone") t = `<b>Pay buffer done</b> (${P(B.bufTarget)})`;
+    else if(e.type==="debt") t = `<b>${esc(e.d.name)} paid off</b>`;
+    else if(e.type==="efFull") t = `<b>Emergency fund full</b> (${B.efM} months, ${P(B.efTarget)})`;
+    else if(e.type==="goal" && e.m>=0) t = `<b>${esc(e.g.name)}</b> fully saved (${P(goalCostAt(e.g,e.m))})`;
+    else if(e.type==="contractEnd"){ const al = sim.allocs[Math.min(e.m, sim.allocs.length-1)]; t = `<b>${esc(e.x.name||"Contract")} ends.</b> Your budget stays the same`; }
+    if(t && !seen.has(t)){ seen.add(t); out.push(`<li><span class="d">${mLabel(e.m)}</span><span class="t">${t}</span></li>`); }
+  });
+  return out.length ? `<ul class="tl">${out.slice(0,14).join("")}</ul>` : `<div class="empty">Fill in the interview to see your timeline.</div>`;
+}
+function bench(a){
+  const I = a.gross;
+  const row = (label, v, limit, mode) => {
+    const p = pc(v,I), ok = mode==="max" ? p<=limit : p>=limit;
+    return `<div class="bench"><span>${label}</span><span class="num">${Math.round(p)}% ${ok?`<span class="pill good">ok</span>`:`<span class="pill bad">${mode==="max"?"too high":"too low"}</span>`}</span>
+      <div class="bar ${ok?"":(mode==="max"?"over":"")}"><i style="width:${Math.min(100,p)}%"></i><em style="left:${limit}%"></em></div>
+      <span class="muted small" style="grid-column:1/-1">Guideline: ${mode==="max"?"at most":"at least"} ${limit}%</span></div>`;
+  };
+  return row("Bills, living & yearly costs", a.needs+a.sink, 50, "max") + row("Debt payments", a.debtReq, 20, "max") + row("Saving, investing & extra debt payoff", a.ef+a.goals+a.invest+a.extra, 20, "min")
+    + `<p class="muted small" style="margin:8px 0 0">The black line is the guideline. These are common rules of thumb, not hard laws.</p>`;
+}
+const INSTR = {
+  sav:["High-interest savings","--s5"], rtb:["PH Treasury bonds / bills","--s3"], mp2:["Pag-IBIG MP2","--s1"], us:["US stock index fund","--s2"], ph:["PH stock index fund","--s4"]
+};
+const MIXES = {
+  short:{label:"Short-term (no stocks)", mix:[["sav",50],["rtb",50]]},
+  conservative:{label:"Conservative", mix:[["rtb",60],["sav",20],["us",15],["ph",5]]},
+  safe:{label:"Safe first", mix:[["mp2",45],["rtb",35],["us",15],["ph",5]]},
+  balanced:{label:"Balanced", mix:[["mp2",25],["rtb",15],["us",40],["ph",20]]},
+  growth:{label:"Growth", mix:[["mp2",10],["rtb",5],["us",60],["ph",25]]}
+};
+function investCard(B,sim){
+  const R = B.risk, M = MIXES[R.k];
+  const start = sim.ev.find(e=>e.type==="stage" && e.stage==="invest");
+  const amt = start ? start.a.invest : 0;
+  const stocks = sum(M.mix.filter(x=>x[0]==="us"||x[0]==="ph"),x=>x[1]);
+  return `<p style="margin:0 0 10px"><b>Your profile: ${M.label}</b> (${stocks}% stocks). <span class="muted">Because ${R.why}</span></p>
+    <p class="small" style="margin:0 0 10px">${start ? (start.m===0 ? `You can start now with <b>${P(amt)}/month</b>.` : `Investing starts <b>${mLabel(start.m)}</b> with about <b>${P(amt)}/month</b>. Until then, your money does more work paying debt and building your safety net.`) : `Investing doesn't start within the plan window yet. Focus on the steps before it.`}</p>
+    <div class="splitbar" style="height:18px">${M.mix.map(x=>`<i style="--c:var(${INSTR[x[0]][1]});flex:${x[1]}" data-tip="${INSTR[x[0]][0]}: ${x[1]}%"></i>`).join("")}</div>
+    <table style="margin-top:8px">${M.mix.map(x=>`<tr><td><span class="sw" style="--c:var(${INSTR[x[0]][1]})"></span>${INSTR[x[0]][0]}</td><td class="num">${x[1]}%</td><td class="num">${amt?P(amt*x[1]/100)+"/mo":""}</td></tr>`).join("")}</table>
+    <p class="muted small" style="margin:10px 0 0">${M.mix.some(x=>x[0]==="mp2")?`MP2: government-backed, 5-year lock, ${S.cfg.mp2.v}% dividend (${cfgCite("mp2")}). `:""}Treasury bonds: fixed rate, only on sale when the Treasury opens an offer. Pick ones that mature before you need the money, and park that share in savings until an offer opens. ${stocks?"US index fund (S&P 500): watch the 25% US tax on dividends and US estate tax above $60,000. Buy the same amount every month. Keep any single-stock picks under 10%.":""}</p>`;
+}
+
+/* ======================= PAYDAYS ======================= */
+// A "pay month" runs from the 15th to the 14th of the next month: the 15th pay plus the 30th pay.
+const pad2 = x => String(x).padStart(2,"0");
+const dim = (y,m) => new Date(y,m,0).getDate();
+// Pay month starts on the 15th (15th + 30th pay) or on the 30th (30th + next 15th pay).
+const S30 = () => S.pmStart==="30";
+const anchor = (y,m) => Math.min(30, dim(y,m));
+function pmOfDate(ds){ const [y,m,d]=ds.split("-").map(Number); const st = S30() ? anchor(y,m) : 15; if(d>=st) return y+"-"+pad2(m); const p=new Date(y,m-2,1); return p.getFullYear()+"-"+pad2(p.getMonth()+1); }
+function cutOfDate(ds){ const [y,m,d]=ds.split("-").map(Number); return (d>=15 && d<anchor(y,m)) ? "15" : "30"; }
+function pmDates(pm){ const [y,m]=pm.split("-").map(Number); const nx=new Date(y,m,1), ny=nx.getFullYear(), nm=nx.getMonth()+1;
+  if(S30()){ const e = new Date(ny, nm-1, anchor(ny,nm)-1); return {d30:`${y}-${pad2(m)}-${pad2(anchor(y,m))}`, d15:`${ny}-${pad2(nm)}-15`, start:`${y}-${pad2(m)}-${pad2(anchor(y,m))}`, end:`${e.getFullYear()}-${pad2(e.getMonth()+1)}-${pad2(e.getDate())}`}; }
+  return {d15:`${y}-${pad2(m)}-15`, d30:`${y}-${pad2(m)}-${pad2(anchor(y,m))}`, start:`${y}-${pad2(m)}-15`, end:`${ny}-${pad2(nm)}-14`}; }
+function pmLabel(pm){ const D=pmDates(pm); const [y1,m1,d1]=D.start.split("-").map(Number), [y2,m2,d2]=D.end.split("-").map(Number); return `${MN[m1-1]} ${d1} – ${MN[m2-1]} ${d2}, ${y2}`; }
+function pmShort(pm){ const [y,m]=pm.split("-").map(Number); return `${MN[m-1]} ${y}`; }
+const fmtD = ds => { const [y,m,d]=ds.split("-").map(Number); return `${MN[m-1]} ${d}`; };
+const TODAY = NOW.getFullYear()+"-"+pad2(NOW.getMonth()+1)+"-"+pad2(NOW.getDate());
+const CUTS = () => S30() ? ["30","15"] : ["15","30"];
+const trackPm = () => /^\d{4}-\d{2}-\d{2}$/.test(S.trackFrom||"") ? pmOfDate(S.trackFrom) : null;
+const notTracked = ds => !!S.trackFrom && ds < S.trackFrom;
+let PM_NOW = TODAY.slice(0,7);
+function refreshPm(){ const real = pmOfDate(TODAY), t = trackPm(); PM_NOW = (t && t > real) ? t : real; }
+const prevPm = pm => { const [y,m]=pm.split("-").map(Number); const d=new Date(y,m-2,1); return d.getFullYear()+"-"+pad2(d.getMonth()+1); };
+const inPm = (ds,pm) => !!ds && pmOfDate(ds)===pm;
+const salaryCheck = (pm,cut) => S.paychecks.find(p=>p.kind==="salary"&&p.pm===pm&&p.cut===cut);
+const sideChecks = (pm,cut) => S.paychecks.filter(p=>p.kind==="side"&&p.pm===pm&&(!cut||p.cut===cut));
+function spendIn(pm, cut){ const r={}; S.spend.forEach(s=>{ if(inPm(s.date,pm) && (!cut || cutOfDate(s.date)===cut)) r[s.cat]=(r[s.cat]||0)+n(s.amount); }); return r; }
+function hasData(pm){ return S.paychecks.some(p=>p.pm===pm) || S.spend.some(s=>inPm(s.date,pm)) || Object.keys(S.paid[pm]||{}).length>0; }
+function pmList(){ const set=new Set([PM_NOW]); const tp=trackPm(); S.paychecks.forEach(p=>set.add(p.pm)); S.spend.forEach(s=>s.date&&set.add(pmOfDate(s.date))); Object.keys(S.paid).forEach(k=>{ if(/^\d{4}-\d{2}$/.test(k)) set.add(k); }); return [...set].filter(x=>x<=PM_NOW && (!tp || x>=tp)).sort().reverse(); }
+function cats(personalAllow){
+  return S.living.map(l=>({id:l.id, name:l.name||"Item", est:n(l.amount)})).concat([{id:"personal", name:"Personal spending", est:personalAllow}, {id:"other", name:"Other / unplanned", est:0}]);
+}
+// Split a real paycheck. Above baseline: the extra follows the extra-money rule (no lifestyle creep).
+// Below baseline: bills stay the same, everything flexible shrinks by the same share; if bills aren't covered, the pay buffer covers it.
+function actualSplit(a, D, actual){
+  const diff = actual - D.pay;
+  const flex = {}; FLEX.forEach(f=>flex[f[0]] = D.flex[f[0]]||0);
+  const ft = sum(FLEX, f=>flex[f[0]]);
+  let shortfall = 0, bonus = null, scale = 1;
+  if(diff >= 0){ bonus = windSplit(a.stage, diff, Infinity); FLEX.forEach(f=>flex[f[0]] += (bonus[f[0]]||0)); }
+  else { const av = ft + diff; if(av >= 0){ scale = ft>0 ? av/ft : 0; FLEX.forEach(f=>flex[f[0]] *= scale); } else { FLEX.forEach(f=>flex[f[0]] = 0); shortfall = -av; scale = 0; } }
+  return {diff, flex, shortfall, bonus, scale};
+}
+function cutActual(pm, cut){
+  const chk = salaryCheck(pm,cut), side = sum(sideChecks(pm,cut), p=>p.amount);
+  const income = (chk?n(chk.amount):0) + side;
+  const paid = S.paid[pm]||{};
+  const ent = Object.entries(paid).filter(([k,v])=>v && v.cut===cut);
+  const bills = sum(ent.filter(([k])=>k.startsWith("bill:")||k.startsWith("debt:")), ([,v])=>v.amt);
+  const saved = sum(ent.filter(([k])=>k.startsWith("move:")||k.startsWith("sink:")||k.startsWith("carry:")), ([,v])=>v.amt);
+  const sp = spendIn(pm,cut), personal = sp.personal||0, living = sum(Object.entries(sp).filter(([k])=>k!=="personal"), ([,v])=>v);
+  return {income, salary:chk?n(chk.amount):0, side, bills, saved, personal, living, left: income - bills - saved - personal - living, logged:!!chk};
+}
+// Ticking a transfer or payment moves the money in your balances right away; unticking reverses exactly what was applied.
+function fxFor(id, amt, stage){
+  const fx = [], kind = id.split(":")[0], sub = id.split(":")[1];
+  const toCards = a0 => { let left=a0; S.debts.filter(d=>d.type==="card" && n(d.balance)>0).sort((x,y)=>n(y.rate||S.cfg.cardRate)-n(x.rate||S.cfg.cardRate)).forEach(d=>{ if(left<=0) return; const t=Math.min(left,n(d.balance)); fx.push({k:"debt", id:d.id, d:-t}); left-=t; }); if(left>0.5) fx.push({k:"efBal", d:left}); };
+  const toGoal = a0 => { const g = S.goals.find(g=>n(g.saved)<n(g.cost)) || S.goals[0]; if(g) fx.push({k:"goal", id:g.id, d:a0}); else fx.push({k:"investBal", d:a0}); };
+  const toStage = (a0, st) => { if(st==="buffer") fx.push({k:"bufBal", d:a0}); else if(st==="debt") toCards(a0); else if(st==="invest"){ const w=windSplit("invest", a0/(1-xPct()), Infinity); if(w.goals>0.5) toGoal(w.goals); fx.push({k:"investBal", d:a0-w.goals}); } else fx.push({k:"efBal", d:a0}); };
+  if(kind==="move"){ ({buf:()=>fx.push({k:"bufBal",d:amt}), ef:()=>fx.push({k:"efBal",d:amt}), invest:()=>fx.push({k:"investBal",d:amt}), goals:()=>toGoal(amt), extra:()=>toCards(amt)})[sub]?.(); }
+  else if(kind==="debt"){ const d=S.debts.find(x=>x.id===sub); if(d) fx.push({k:"debt", id:d.id, d:-amt}); }
+  else if(kind==="sink"){ const tot=sum(S.annual,x=>x.amount); S.annual.forEach(x=>{ if(n(x.amount)>0) fx.push({k:"annual", id:x.id, d:amt*n(x.amount)/tot}); }); }
+  else if(kind==="xtra") toStage(amt, stage);
+  else if(kind==="cover"){ const fromBuf=Math.min(amt, n(S.bufBal)); if(fromBuf>0) fx.push({k:"bufBal", d:-fromBuf}); if(amt-fromBuf>0.5) fx.push({k:"efBal", d:-(amt-fromBuf)}); }
+  return fx;
+}
+function applyFx(fx, sign){
+  const out = [];
+  fx.forEach(f=>{
+    const d = f.d*sign;
+    if(f.k==="bufBal"||f.k==="efBal"||f.k==="investBal"){ const b=n(S[f.k]); const nb=Math.max(0,b+d); S[f.k]=String(Math.round(nb)); out.push({...f, d:(nb-b)*sign}); }
+    else { const arr = {debt:S.debts, goal:S.goals, annual:S.annual}[f.k], fld = {debt:"balance", goal:"saved", annual:"saved"}[f.k]; const it = arr.find(x=>x.id===f.id); if(!it) return; const b=n(it[fld]); const nb=Math.max(0,b+d); it[fld]=String(Math.round(nb)); out.push({...f, d:(nb-b)*sign}); }
+  });
+  return out;
+}
+const FXN = {bufBal:"Pay buffer", efBal:"Emergency fund", investBal:"Investments"};
+function fxText(fx){ return fx.map(f=>{ const nm = FXN[f.k] || (f.k==="debt" ? (S.debts.find(x=>x.id===f.id)||{}).name : f.k==="goal" ? (S.goals.find(x=>x.id===f.id)||{}).name : (S.annual.find(x=>x.id===f.id)||{}).name) || ""; return `${nm} ${f.d>=0?"+":"−"}${P(Math.abs(f.d)).replace("−","")}`; }).join(", "); }
+function tickOn(pm, id, amt, cut){
+  const stage = baseAlloc(base()).stage;
+  const fx = applyFx(fxFor(id, n(amt), stage), 1);
+  (S.paid[pm] ||= {})[id] = {amt:String(amt), cut, fx, stage};
+  return fx;
+}
+function tickOff(pm, id){ const p=(S.paid[pm]||{})[id]; if(!p) return; if(p.fx) applyFx(p.fx, -1); delete S.paid[pm][id]; }
+let PMV = null;
+function renderMonth(){
+  const el = $("#monthBody");
+  const B = base();
+  if(n(S.pay15)+n(S.pay30)<=0){ el.innerHTML = `<div class="card"><h2>Paydays</h2><p class="sub">Fill in your baseline pay in the <a href="#" data-go="interview">Interview</a> first.</p></div>`; return; }
+  if(!PMV) PMV = PM_NOW;
+  const sim = simulate(B), a = baseAlloc(B), pd = paydayData(B,a), dts = pmDates(PMV);
+  const isNow = PMV===PM_NOW, prev = prevPm(PM_NOW);
+  let h = "";
+  const daysSince = S.lastBackup ? Math.round((new Date(TODAY)-new Date(S.lastBackup))/864e5) : null;
+  if((S.paychecks.length || S.spend.length) && (daysSince==null || daysSince>30)) h += `<div class="callout" style="margin-bottom:14px"><b>${daysSince==null?"You haven't exported a backup yet.":`Last backup was ${daysSince} days ago.`}</b> Your data lives only in this app on this phone. <button class="btn sm primary" data-go="backup" style="margin-left:6px">Back up now</button></div>`;
+  if(isNow && hasData(prev) && S.seenSummary!==prev && (!trackPm() || prev>=trackPm())) h += `<div class="callout" style="margin-bottom:14px"><b>A new pay month started on ${fmtD(pmDates(PM_NOW).start)}.</b> Here's how ${pmLabel(prev)} went. <button class="btn sm primary" data-showpm="${prev}" style="margin-left:6px">See last month's summary</button></div>`;
+  h += `<div class="row" style="margin-bottom:14px;align-items:flex-end"><div><div class="eyebrow">Pay month</div><h2>${pmLabel(PMV)}</h2><p class="sub" style="margin:0">${isNow?"On each payday, enter what actually landed. Everything below recalculates from the real amount.":"Past pay month. You can still fix entries."}</p></div><span class="sp"></span>
+    <label class="row small">Show <select id="pmv" style="width:auto">${pmList().map(pm=>`<option value="${pm}" ${pm===PMV?"selected":""}>${pmLabel(pm)}</option>`).join("")}</select></label></div>`;
+  if(S.trackFrom && TODAY < S.trackFrom) h += `<div class="callout" style="margin-bottom:14px"><b>Tracking starts ${fmtD(S.trackFrom)}.</b> Nothing to log until then. This is your first pay month, so you can see what's planned for each payday.</div>`;
+  h += `<div class="grid g2">${CUTS().map(c=>paydayCard(a, pd, c, c==="15"?dts.d15:dts.d30)).join("")}</div>`;
+  // side money + log spending
+  const C = cats(sum(["15","30"],c=>{ const chk=salaryCheck(PMV,c); return chk ? actualSplit(a,pd[c],n(chk.amount)).flex.personal : pd[c].flex.personal; }) + sum(sideChecks(PMV),p=>n(p.amount)*xPct()));
+  const logs = S.spend.filter(s=>inPm(s.date,PMV)).sort((x,y)=>y.date.localeCompare(x.date));
+  const catName = id => (C.find(c=>c.id===id)||{name:"Deleted category"}).name;
+  const sides = sideChecks(PMV);
+  const k = Math.round(xPct()*100);
+  h += `<div class="grid g2 mt">
+    <div class="card"><h3>Log spending</h3>
+      <form id="spendForm" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">
+        <input name="date" type="date" value="${isNow && TODAY>=dts.start ? TODAY : dts.start}" min="${S.trackFrom && S.trackFrom>dts.start ? S.trackFrom : dts.start}" max="${dts.end}" required aria-label="Date">
+        <select name="cat" aria-label="Category">${C.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select>
+        <input name="amount" type="number" min="0" step="0.01" placeholder="Amount" required aria-label="Amount">
+        <input name="note" placeholder="What for" aria-label="Note">
+        <button class="btn primary">Log</button>
+      </form>
+      <p class="muted small" style="margin:8px 0 0">Spending from the 30th to the 14th counts against the 30th pay, and from the 15th to the 29th against the 15th pay.</p>
+      ${logs.length?`<div class="tscroll" style="margin-top:10px;max-height:280px;overflow-y:auto"><table>${logs.map(s=>`<tr><td class="muted small">${fmtD(s.date)}<br><span class="pill">${cutOfDate(s.date)}th</span></td><td>${esc(catName(s.cat))}<br><span class="muted small">${esc(s.note)}</span></td><td class="num">${P(s.amount)}</td><td style="width:30px"><button class="btn x" data-rmspend="${s.id}">×</button></td></tr>`).join("")}</table></div>`:`<div class="empty">Nothing logged yet this pay month.</div>`}
+    </div>
+    <div class="card"><h3>Extra money received</h3>
+      <p class="sub small" style="margin-bottom:10px">Freelance payments, contract pay, bonuses, 13th-month pay. Log it when it lands and you'll see where it goes: ${k}% for you, ${100-k}% to ${WTARGET[a.stage]}.</p>
+      <form id="sideForm" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">
+        <input name="name" placeholder="From (e.g. SEO retainer)" aria-label="Source">
+        <input name="amount" type="number" min="0" step="0.01" placeholder="Amount" required aria-label="Amount">
+        <input name="date" type="date" value="${isNow && TODAY>=dts.start ? TODAY : dts.start}" min="${dts.start}" max="${dts.end}" required aria-label="Date">
+        <button class="btn primary">Add</button>
+      </form>
+      ${sides.length?`<table style="margin-top:10px">${sides.map(p=>{ const w=windSplit(a.stage, n(p.amount), Infinity); const ticked=(S.paid[PMV]||{})["xtra:"+p.id]; return `<tr class="${ticked?"paid":""}"><td style="width:28px"><input type="checkbox" data-xtra="${p.id}" data-cut="${p.cut}" data-est="${n(p.amount)-w.personal}" ${ticked?"checked":""} aria-label="Moved"></td><td><span class="bn">${esc(p.name||"Extra money")}</span> <span class="muted small">${fmtD(p.date||dts.start)}</span><br><span class="small muted">${P(w.personal)} for you · <b>${P(n(p.amount)-w.personal)}</b> → ${WTARGET[a.stage]}</span></td><td class="num">${P(p.amount)}</td><td style="width:30px"><button class="btn x" data-rmpay="${p.id}">×</button></td></tr>`; }).join("")}</table><p class="muted small" style="margin:6px 0 0">Tick it once you've moved the ${100-k}%.</p>`:""}
+    </div></div>`;
+  h += `<div class="card mt"><h3>Where each paycheck went</h3>${compareChart(PMV)}</div>`;
+  h += `<div class="grid g2 mt"><div class="card"><h3>Spending vs plan</h3>${catBars(C)}</div><div class="card"><h3>${isNow?"Pay month so far":"Pay month summary"}</h3>${pmSummary(PMV, C, a, sim)}</div></div>`;
+  el.innerHTML = h;
+}
+function paydayCard(a, pd, cut, date){
+  const D = pd[cut], chk = salaryCheck(PMV, cut), paid = S.paid[PMV]||{};
+  const sp = chk ? actualSplit(a, D, n(chk.amount)) : null;
+  const flex = sp ? sp.flex : D.flex;
+  const spentP = spendIn(PMV,cut).personal||0;
+  const future = date > TODAY;
+  const k = Math.round(xPct()*100);
+  let h = `<div class="card"><div class="row"><div><div class="eyebrow">${cut}th pay · ${fmtD(date)}</div>`;
+  if(chk){
+    const d = sp.diff;
+    h += `<div class="row" style="margin-top:4px"><span style="font-family:var(--ff-mono);font-size:26px;font-weight:500">${P(chk.amount)}</span>${Math.abs(d)<0.5?`<span class="pill good">on baseline</span>`:d>0?`<span class="pill good">${P(d)} above baseline</span>`:`<span class="pill bad">${P(-d)} below baseline</span>`}</div></div><span class="sp"></span>
+      <label class="small muted">Edit <input type="number" min="0" step="0.01" value="${esc(chk.amount)}" data-editpay="${cut}" style="width:110px;padding:4px 8px"></label></div>`;
+    if(sp.bonus && d>0.5) h += `<div class="callout" style="margin-top:10px"><b>${P(d)} more than your baseline.</b> Your allowance only goes up by ${P(sp.bonus.personal)} (${k}%). The other ${P(d-sp.bonus.personal)} goes to ${WTARGET[a.stage]}.</div>`;
+    else if(sp.shortfall>0.5) h += `<div class="callout bad" style="margin-top:10px"><b>This paycheck is ${P(sp.shortfall)} short of covering its bills.</b> Take ${P(sp.shortfall)} from your ${B_buf()?(n(S.bufBal)>=sp.shortfall?"pay buffer":"pay buffer, and the rest from your emergency fund"):"emergency fund"}, not the card. No savings transfers or personal spending from this payday.
+      <label class="row small" style="margin-top:8px;color:var(--text)"><input type="checkbox" data-paid="cover:${cut}" data-cut="${cut}" data-est="${Math.round(sp.shortfall)}" ${paid["cover:"+cut]?"checked":""}> I took ${P(sp.shortfall)} out of savings to cover it</label></div>`;
+    else if(d<-0.5) h += `<div class="callout" style="margin-top:10px"><b>${P(-d)} below your baseline.</b> Bills stay the same, so everything flexible on this payday shrinks by ${Math.round((1-sp.scale)*100)}%: personal spending and savings alike.</div>`;
+  } else {
+    h += `<div class="muted small" style="margin-top:4px">Baseline ${P(D.pay)}${future?". Not paid yet":""}</div></div></div>
+      <div class="row" style="margin-top:10px;flex-wrap:nowrap"><input type="number" min="0" step="0.01" placeholder="What landed in your account?" data-paycut="${cut}" aria-label="Paycheck amount"><button class="btn primary" data-savepay="${cut}">Save</button></div>
+      <p class="muted small" style="margin:6px 0 0">The amounts below are planned at your baseline until you enter the real one.</p>`;
+  }
+  const tick = (id, est, label, col, extra="") => { const p = paid[id]; return `<tr class="${p?"paid":""}"><td style="width:28px"><input type="checkbox" data-paid="${id}" data-cut="${cut}" data-est="${Math.round(est)}" ${p?"checked":""} aria-label="Done"></td><td><span class="sw" style="--c:var(${col})"></span><span class="bn">${label}</span>${extra}</td><td class="num" style="width:118px">${p?`<input type="number" min="0" step="0.01" value="${esc(p.amt)}" data-paidamt="${id}" aria-label="Actual amount" style="padding:4px 6px">`:P(est)}</td></tr>`; };
+  const rows = D.fixed.map(x=> x.tick ? tick(x.id, x.v, x.t, FCOL[x.k], x.due?` <span class="muted small">due ${esc(x.due)}th</span>`:"") : `<tr><td></td><td><span class="sw" style="--c:var(${FCOL[x.k]})"></span>${x.t} <span class="muted small">log below</span></td><td class="num">${P(x.v)}</td></tr>`).join("")
+    + (flex.personal>0.5 ? `<tr><td></td><td><span class="sw" style="--c:var(--s3)"></span>Personal spending <span class="muted small">spent ${P(spentP)}</span></td><td class="num" style="${spentP>flex.personal+0.5?"color:var(--crit)":""}">${P(flex.personal)}</td></tr>` : "")
+    + FLEX.filter(f=>f[0]!=="personal" && flex[f[0]]>0.5).map(f=>tick("move:"+f[0]+":"+cut, flex[f[0]], f[1], f[2])).join("");
+  h += `<table style="margin-top:10px">${rows}</table>`;
+  if(D.carryIn>0.5) h += `<p class="small" style="margin:8px 0 0">Plus ${P(D.carryIn)} kept from the ${cut==="15"?"30":"15"}th pay for this payday's bills.</p>`;
+  h += `<p class="muted small" style="margin:8px 0 0">Tick each bill and transfer as you do it. Ticking updates your balances right away, and unticking undoes it. You can change the amount to what you actually paid.</p></div>`;
+  return h;
+}
+const B_buf = () => S.payVaries==="yes" && n(S.bufBal)>0;
+function compareChart(pm){
+  const rows = [];
+  CUTS().forEach(c=>rows.push({lab:`${c}th · ${pmShort(pm)}`, d:cutActual(pm,c)}));
+  const pp = prevPm(pm);
+  if(hasData(pp) && (!trackPm() || pp>=trackPm())) CUTS().forEach(c=>rows.push({lab:`${c}th · ${pmShort(pp)}`, d:cutActual(pp,c), prev:true}));
+  const SEG = [["bills","Bills & debt","--s1"],["living","Living costs","--s2"],["personal","Personal","--s3"],["saved","Saved & moved","--s4"]];
+  const maxV = Math.max(1, ...rows.map(r=>Math.max(r.d.income, r.d.bills+r.d.living+r.d.personal+r.d.saved)));
+  if(rows.every(r=>!r.d.income && !r.d.bills && !r.d.living && !r.d.personal && !r.d.saved)) return `<div class="empty">Log a paycheck, tick your bills and log spending, and this shows where each paycheck went.</div>`;
+  const bar = r => { const d=r.d; const segs = SEG.filter(s=>d[s[0]]>0.5); const left = d.left;
+    return `<div style="display:grid;grid-template-columns:118px 1fr 84px;gap:10px;align-items:center;padding:6px 0;white-space:nowrap;${r.prev?"opacity:.72":""}">
+      <span class="small" style="font-family:var(--ff-mono);font-size:12px">${r.lab}</span>
+      <div style="position:relative;height:24px">
+        <div style="height:24px;width:${d.income/maxV*100}%;position:absolute;inset:0 auto 0 0;background:var(--track);border-radius:6px"></div>
+        <div class="splitbar" style="height:24px;position:absolute;inset:0 auto 0 0;width:${(d.bills+d.living+d.personal+d.saved)/maxV*100}%;background:transparent">${segs.map(s=>`<i style="--c:var(${s[2]});flex:${d[s[0]]}" data-tip="${s[1]}: ${P(d[s[0]])}"></i>`).join("")}</div>
+      </div>
+      <span class="num small">${d.logged||d.side?P(d.income):"not logged"}</span></div>`; };
+  const legend = `<div class="legend row small" style="gap:14px;margin-top:6px;color:var(--text-2)">${SEG.map(s=>`<span><span class="sw" style="--c:var(${s[2]})"></span>${s[1]}</span>`).join("")}<span><span class="sw" style="--c:var(--track)"></span>Not yet used</span></div>`;
+  const tbl = `<div class="tscroll" style="margin-top:12px"><table><tr><th>Payday</th><th class="num">Received</th>${SEG.map(s=>`<th class="num">${s[1]}</th>`).join("")}<th class="num">Left</th></tr>${rows.map(r=>`<tr style="${r.prev?"color:var(--muted)":""}"><td>${r.lab}</td><td class="num">${P(r.d.income)}</td>${SEG.map(s=>`<td class="num">${P(r.d[s[0]])}</td>`).join("")}<td class="num" style="${r.d.left<-0.5?"color:var(--crit)":""}">${P(r.d.left)}</td></tr>`).join("")}</table></div>`;
+  return rows.map(bar).join("") + legend + tbl + `<p class="muted small" style="margin:8px 0 0">The gray part is money received that isn't ticked or logged yet. If it stays gray at the end of the pay month, it went somewhere you didn't track.</p>`;
+}
+function catBars(C){
+  const act = spendIn(PMV);
+  const rows = C.filter(c=>c.est>0||act[c.id]);
+  if(!rows.length) return `<div class="empty">Add living costs in the Interview.</div>`;
+  return rows.map(c=>{ const v=act[c.id]||0, over=v>c.est+0.5; return `<div class="cat"><span>${esc(c.name)}</span><span class="num small">${P(v)} / ${P(c.est)}${over?` <span class="pill bad">over</span>`:""}</span><div class="bar ${over?"over":""}"><i style="width:${c.est>0?Math.min(100,v/c.est*100):100}%;background:${over?"var(--crit)":c.id==="personal"?"var(--s3)":"var(--s2)"}"></i></div></div>`; }).join("");
+}
+function pmTotals(pm){
+  const c15=cutActual(pm,"15"), c30=cutActual(pm,"30");
+  const sp = spendIn(pm); const spend = sum(Object.values(sp),v=>v);
+  return {income:c15.income+c30.income, salary:c15.salary+c30.salary, side:c15.side+c30.side, spend, sp, saved:c15.saved+c30.saved, bills:c15.bills+c30.bills, logged:c15.logged&&c30.logged};
+}
+function pmSummary(pm, C, a, sim){
+  const done = pm < PM_NOW, T = pmTotals(pm);
+  if(!hasData(pm)) return `<div class="empty">Nothing logged for this pay month yet.</div>`;
+  const out = [];
+  const baseTot = n(S.pay15)+n(S.pay30);
+  out.push(`<table><tr><td>Salary received</td><td class="num">${P(T.salary)}</td><td class="small muted">${T.logged?(T.salary>=baseTot?`${P(T.salary-baseTot)} above baseline`:`${P(baseTot-T.salary)} below baseline`):"both paychecks not logged yet"}</td></tr>
+    ${T.side?`<tr><td>Extra money</td><td class="num">${P(T.side)}</td><td class="small muted">freelance, contracts, bonuses</td></tr>`:""}
+    <tr><td>Bills & debt paid</td><td class="num">${P(T.bills)}</td><td></td></tr>
+    <tr><td>Spent</td><td class="num">${P(T.spend)}</td><td></td></tr>
+    <tr><td>Saved & moved</td><td class="num">${P(T.saved)}</td><td></td></tr></table>`);
+  // vs plan, only categories logged
+  const LC = C.filter(c=>T.sp[c.id]!=null), unlogged = C.filter(c=>T.sp[c.id]==null && c.est>0);
+  const diff = sum(LC,c=>c.est) - sum(LC,c=>T.sp[c.id]||0);
+  if(unlogged.length) out.push(`<p class="small muted" style="margin:10px 0 0">Not in the comparison because nothing is logged yet: ${unlogged.map(c=>esc(c.name)).join(", ")}.</p>`);
+  if(done && LC.length){
+    if(diff>0.5) out.push(`<div class="callout" style="margin-top:10px"><b>You came in ${P(diff)} under plan.</b> Move it to ${WTARGET[a.stage]} now, before it gets spent.</div>`);
+    else if(diff<-0.5) out.push(`<div class="callout bad" style="margin-top:10px"><b>You went ${P(-diff)} over plan.</b> It came out of something: savings, the card or the next pay month. Check which in your check-in.</div>`);
+    else out.push(`<div class="callout" style="margin-top:10px"><b>Right on plan.</b> Good month.</div>`);
+  }
+  const over = C.filter(c=>(T.sp[c.id]||0) > c.est+0.5);
+  if(over.length) out.push(`<p class="small" style="margin:10px 0 0">Over: ${over.map(c=>`${esc(c.name)} by ${P((T.sp[c.id]||0)-c.est)}`).join(", ")}.</p>`);
+  // compare to previous pay month + lifestyle check
+  const pp = prevPm(pm);
+  if(hasData(pp) && !done && !T.logged) out.push(`<p class="small muted" style="margin:12px 0 0">The comparison with ${pmShort(pp)} and the lifestyle check show up once both paychecks are logged.</p>`);
+  else if(hasData(pp)){
+    const Pv = pmTotals(pp);
+    const inc = T.income, pinc = Pv.income;
+    const ch = (x,y) => y>0 ? (x-y)/y*100 : 0;
+    const di = ch(inc,pinc), ds = ch(T.spend, Pv.spend);
+    const moves = C.map(c=>({c, d:(T.sp[c.id]||0)-(Pv.sp[c.id]||0)})).filter(x=>Math.abs(x.d)>=300).sort((x,y)=>Math.abs(y.d)-Math.abs(x.d)).slice(0,3);
+    out.push(`<h4 style="margin-top:16px">Compared with ${pmShort(pp)}</h4><p class="small" style="margin:0">Income ${inc>=pinc?"up":"down"} ${P(Math.abs(inc-pinc))}${pinc?` (${di>=0?"+":""}${Math.round(di)}%)`:""}. Spending ${T.spend>=Pv.spend?"up":"down"} ${P(Math.abs(T.spend-Pv.spend))}${Pv.spend?` (${ds>=0?"+":""}${Math.round(ds)}%)`:""}.${moves.length?" Biggest changes: "+moves.map(x=>`${esc(x.c.name)} ${x.d>0?"+":"−"}${P(Math.abs(x.d)).replace("−","")}`).join(", ")+".":""}</p>`);
+    if(pinc>0 && Pv.spend>0 && (done || T.logged)){
+      if(di>=10 && ds > di*0.5) out.push(`<div class="note warn"><span class="ic">!</span><div><b>Lifestyle creep alert</b><p>Your income went up ${Math.round(di)}% and your spending went up ${Math.round(ds)}%. That's exactly what you said you wanted to avoid. Check the biggest changes above.</p></div></div>`);
+      else if(di>=10) out.push(`<div class="note good"><span class="ic">✓</span><div><b>Income up, lifestyle steady</b><p>Income up ${Math.round(di)}%, spending ${ds>=0?"up only "+Math.round(ds)+"%":"down"}. That's the whole point. The extra went to your plan.</p></div></div>`);
+      else if(ds>=10 && di<5) out.push(`<div class="note warn"><span class="ic">!</span><div><b>Spending up ${Math.round(ds)}% without more income</b><p>That gap has to come from savings or the card. Look at the biggest changes above.</p></div></div>`);
+    }
+  }
+  // 3 pay months in a row over
+  const last3 = [0,1,2].map(i=>{ let x = done?pm:prevPm(pm); for(let j=0;j<i;j++) x=prevPm(x); return x; });
+  if(last3.every(hasData)){
+    S.living.forEach(l=>{ const vals = last3.map(x=>spendIn(x)[l.id]||0); if(n(l.amount)>0 && vals.every(v=>v>n(l.amount)+0.5)){ const avg=Math.round(sum(vals,v=>v)/3);
+      out.push(`<div class="note warn"><span class="ic">!</span><div><b>${esc(l.name)} has gone over 3 pay months in a row</b><p>You planned ${P(l.amount)} but averaged ${P(avg)}. Cut back, or raise the estimate so the plan is honest. Raising it lowers your savings and the timeline shows it.</p><button class="btn sm" data-setest="${l.id}" data-v="${avg}" style="margin-top:6px">Raise estimate to ${P(avg)}</button></div></div>`); } });
+  }
+  // baseline suggestion from logged paychecks
+  ["15","30"].forEach(c=>{
+    const L = payLogs(c);
+    if(L.length>=3){ const low = Math.min(...L.map(p=>n(p.amount))), b = n(S["pay"+c]);
+      if(b>0 && Math.abs(low-b)/b > 0.03) out.push(`<div class="note"><span class="ic">i</span><div><b>${c}th pay baseline: ${P(b)}</b><p>Your lowest ${c}th paycheck in the last ${L.length} pay months was ${P(low)}. ${low<b?"Your baseline is higher than some real paychecks, so some months the plan expects money you don't get.":"Your baseline is lower than every recent paycheck. Raising it to your lowest real paycheck is still safe."}</p><button class="btn sm" data-setbase="${c}" data-v="${Math.round(low)}" style="margin-top:6px">Set baseline to ${P(low)}</button></div></div>`); }
+  });
+  return out.join("");
+}
+
+/* ======================= CHECK-IN & PROGRESS ======================= */
+function renderProgress(){
+  const el = $("#progBody");
+  const B = base();
+  const hasIncome = n(S.pay15)+n(S.pay30)>0;
+  const ex = S.history.find(x=>x.ym===PM_NOW);
+  const fld = (id,label,val,hint) => `<label class="q" style="margin:0"><span class="ql small">${label}</span>${hint?`<span class="hint">${hint}</span>`:""}<input type="number" step="0.01" min="0" data-ci="${id}" value="${esc(val)}"></label>`;
+  let h = `<h2>Check-in &amp; progress</h2><p class="sub">Once per pay month, on the 15th before you log your new paycheck, open your bank apps and confirm these balances. Ticking transfers in Paydays already updates them, so this is a quick check that the numbers match your real accounts.</p>`;
+  h += `<div class="card"><div class="row"><h3 style="margin:0">Pay month check-in</h3><span class="sp"></span><span class="pill">${pmLabel(PM_NOW)}</span></div>
+    ${ex?`<p class="muted small" style="margin:6px 0 0">You already checked in for this pay month. Saving again replaces it.</p>`:""}
+    <div class="grid g3" style="margin-top:12px">
+      ${S.payVaries==="yes"?fld("buf","Pay buffer balance",S.bufBal):""}
+      ${fld("ef","Emergency savings balance",S.efBal)}
+      ${fld("invest","Investments, current value",S.investBal)}
+      ${S.debts.map(d=>fld("debt:"+d.id, esc(d.name||"Debt")+", still owed", d.balance)).join("")}
+      ${S.goals.map(g=>fld("goal:"+g.id, esc(g.name||"Goal")+", saved", g.saved)).join("")}
+      ${S.annual.map(x=>fld("annual:"+x.id, esc(x.name||"Yearly cost")+", set aside", x.saved)).join("")}
+    </div>
+    <div class="row" style="margin-top:14px"><button class="btn primary" id="ciSave">Save check-in</button><span class="muted small">This also updates the starting balances your plan uses.</span></div>
+  </div>`;
+  if(!hasIncome){ el.innerHTML = h + `<div class="card mt"><p class="empty">Fill in the interview first, then check in here each month.</p></div>`; return; }
+  const bl = S.baseline;
+  if(!S.history.length || !bl){ el.innerHTML = h + `<div class="card mt"><h3>Progress</h3><p class="empty">Save your first check-in. I'll lock in today's plan as the target and track you against it every month after.</p></div>`; return; }
+  const latest = S.history.slice().sort((x,y)=>y.ym.localeCompare(x.ym))[0];
+  const k = (idxOf(latest.ym)-idxOf(bl.start));
+  const plan = bl.traj[Math.min(Math.max(k,0), bl.traj.length-1)];
+  const act = histSnap(latest);
+  const rowS = (label, p, v, higherBetter) => { const d=v-p, good = higherBetter ? d>=-0.5 : d<=0.5; return `<tr><td>${label}</td><td class="num">${P(p)}</td><td class="num">${P(v)}</td><td>${Math.abs(d)<0.5?`<span class="pill good">on plan</span>`:good?`<span class="pill good">ahead ${P(Math.abs(d))}</span>`:`<span class="pill bad">behind ${P(Math.abs(d))}</span>`}</td></tr>`; };
+  h += `<div class="card mt"><div class="row"><h3 style="margin:0">Progress vs plan</h3><span class="sp"></span><button class="btn sm" id="rebase">Reset target to current plan</button></div>
+    <p class="muted small" style="margin:6px 0 10px">Target set in the ${pmShort(bl.start)} pay month. Latest check-in: ${pmLabel(latest.ym)}, pay month ${k+1} of the plan. Reset the target after big changes like a new contract or a raise.</p>
+    <div class="tscroll"><table><tr><th>Measure</th><th class="num">Plan</th><th class="num">Actual</th><th></th></tr>
+      ${rowS("Emergency fund", plan.ef, act.ef, true)}${rowS("Debt still owed", plan.debt, act.debt, false)}${rowS("Saved for goals", plan.goals, act.goals, true)}${rowS("Investments", plan.invest, act.invest, true)}
+    </table></div></div>`;
+  h += `<div class="charts mt">${["ef","debt","goals","invest"].map(m=>chart(m, bl)).join("")}</div>`;
+  h += `<div class="card mt"><h3>Check-in history</h3><div class="tscroll"><table><tr><th>Pay month</th><th class="num">Emergency fund</th><th class="num">Debt</th><th class="num">Goals</th><th class="num">Investments</th><th></th></tr>${S.history.slice().sort((x,y)=>y.ym.localeCompare(x.ym)).map(x=>{ const s=histSnap(x); return `<tr><td>${pmLabel(x.ym)}</td><td class="num">${P(s.ef)}</td><td class="num">${P(s.debt)}</td><td class="num">${P(s.goals)}</td><td class="num">${P(s.invest)}</td><td style="width:30px"><button class="btn x" data-rmhist="${x.ym}" title="Delete">×</button></td></tr>`; }).join("")}</table></div></div>`;
+  el.innerHTML = h;
+}
+function histSnap(x){ return {ef:n(x.ef), invest:n(x.invest), debt:sum(Object.values(x.debts||{}),v=>v), goals:sum(Object.values(x.goals||{}),v=>v)}; }
+function chart(metric, bl){
+  const T = {ef:"Emergency fund", debt:"Debt still owed", goals:"Saved for goals", invest:"Investments"};
+  const s0 = idxOf(bl.start);
+  const pts = S.history.map(x=>({i:idxOf(x.ym)-s0, v:histSnap(x)[metric], ym:x.ym})).filter(p=>p.i>=0).sort((x,y)=>x.i-y.i);
+  const lastI = Math.max(12, (pts.length?pts[pts.length-1].i:0)+6);
+  const plan = bl.traj.slice(0, lastI+1).map((t,i)=>({i, v:t[metric]}));
+  const maxV = Math.max(1, ...plan.map(p=>p.v), ...pts.map(p=>p.v));
+  if(maxV<=1) return `<div class="card chart"><h3 style="margin:0 0 6px;font-size:14.5px">${T[metric]}</h3><div class="empty small">${metric==="invest"?"Nothing invested yet, and the plan doesn't start investing in the next year. That's expected at your stage.":metric==="debt"?"No debt. Nice.":"Nothing planned here in the next year."}</div></div>`;
+  const W=300, H=130, L=8, R=8, Tp=8, Bt=20;
+  const x = i => L + (i/lastI)*(W-L-R), y = v => Tp + (1 - v/maxV)*(H-Tp-Bt);
+  const pPath = plan.map((p,j)=>(j?"L":"M")+x(p.i).toFixed(1)+" "+y(p.v).toFixed(1)).join(" ");
+  const aPath = pts.map((p,j)=>(j?"L":"M")+x(p.i).toFixed(1)+" "+y(p.v).toFixed(1)).join(" ");
+  return `<div class="card chart"><div class="row"><h3 style="margin:0;font-size:14.5px">${T[metric]}</h3><span class="sp"></span><span class="muted small">max ${P(maxV)}</span></div>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${T[metric]}: plan vs actual">
+      <line x1="${L}" x2="${W-R}" y1="${y(0)}" y2="${y(0)}" stroke="var(--grid)" stroke-width="1"/>
+      <line x1="${L}" x2="${W-R}" y1="${y(maxV/2)}" y2="${y(maxV/2)}" stroke="var(--grid)" stroke-width="1" stroke-dasharray="2 3"/>
+      <path d="${pPath}" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4"/>
+      ${pts.length>1?`<path d="${aPath}" fill="none" stroke="var(--s1)" stroke-width="2"/>`:""}
+      ${pts.map(p=>`<circle cx="${x(p.i)}" cy="${y(p.v)}" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/><circle cx="${x(p.i)}" cy="${y(p.v)}" r="12" fill="transparent" data-tip="${ymLabel(p.ym)}: ${P(p.v)} (plan ${P((bl.traj[p.i]||bl.traj[bl.traj.length-1])[metric])})"/>`).join("")}
+      <text x="${L}" y="${H-4}" font-size="11" fill="var(--muted)">${ymLabel(bl.start)}</text>
+      <text x="${W-R}" y="${H-4}" font-size="11" fill="var(--muted)" text-anchor="end">${mLabel(s0+lastI)}</text>
+    </svg>
+    <div class="lg"><span><span class="dash"></span>Plan</span><span><span class="solid"></span>Actual</span></div></div>`;
+}
+function setBaseline(startYm){
+  const sim = simulate(base());
+  S.baseline = {start:startYm||PM_NOW, traj:sim.traj.slice(0,121).map(t=>({ef:Math.round(t.ef), debt:Math.round(t.debt), goals:Math.round(t.goals), invest:Math.round(t.invest)}))};
+}
+function saveCheckin(){
+  const ym = PM_NOW;
+  const rec = {ym, ef:0, invest:0, debts:{}, goals:{}, annual:{}};
+  document.querySelectorAll("[data-ci]").forEach(inp=>{
+    const [kind,id] = inp.dataset.ci.split(":"); const v = inp.value;
+    if(kind==="ef"){ rec.ef=n(v); S.efBal=v; }
+    else if(kind==="buf"){ rec.buf=n(v); S.bufBal=v; }
+    else if(kind==="invest"){ rec.invest=n(v); S.investBal=v; }
+    else if(kind==="debt"){ rec.debts[id]=n(v); const d=S.debts.find(x=>x.id===id); if(d) d.balance=v; }
+    else if(kind==="goal"){ rec.goals[id]=n(v); const g=S.goals.find(x=>x.id===id); if(g) g.saved=v; }
+    else if(kind==="annual"){ rec.annual[id]=n(v); const a=S.annual.find(x=>x.id===id); if(a) a.saved=v; }
+  });
+  S.history = S.history.filter(x=>x.ym!==ym); S.history.push(rec);
+  if(!S.baseline) setBaseline(ym);
+  save(); renderAll(); toast("Check-in saved");
+}
+
+/* ======================= SETTINGS ======================= */
+function renderCfg(){
+  const c = S.cfg;
+  const row = (k, label) => `<div class="grid g3" style="align-items:end;padding:10px 0;border-bottom:1px solid var(--border)">
+    <label class="q" style="margin:0"><span class="ql small">${label}</span><input type="number" step="0.01" min="0" data-cfg="${k}" value="${esc(c[k].v)}"></label>
+    <label class="q" style="margin:0"><span class="ql small">As of</span><input type="text" data-cfgasof="${k}" value="${esc(c[k].asOf)}" placeholder="e.g. 2026-10"></label>
+    <div class="small muted" style="padding-bottom:8px">Source: ${c[k].byYou?"you":`<a href="${esc(c[k].url)}" target="_blank" rel="noopener">${esc(c[k].src)}</a>`}</div></div>`;
+  $("#cfgBody").innerHTML = row("inflation","PH inflation (%/yr)") + row("mp2","MP2 dividend (%/yr)")
+    + `<div class="grid g3" style="padding-top:10px"><label class="q" style="margin:0"><span class="ql small">Credit card rate when you don't know yours (%/yr)</span><input type="number" step="0.5" min="0" data-cfgplain="cardRate" value="${esc(c.cardRate)}"></label><div class="small muted" style="align-self:end;padding-bottom:8px">PH cards can charge up to 3% a month. Your statement shows your actual rate.</div></div>
+    <p class="muted small" style="margin:10px 0 0">Inflation raises your goal prices over time. MP2 is shown in the investment plan. The plan doesn't assume any investment returns.</p>`;
+}
+
+/* ======================= WIRING ======================= */
+function renderAll(){ refreshPm(); renderWizard(); renderPlan(); renderMonth(); renderProgress(); renderCfg(); status(); }
+function go(t){
+  document.querySelectorAll("nav [data-tab]").forEach(b=>b.setAttribute("aria-selected", b.dataset.tab===t));
+  document.querySelectorAll("section.tab").forEach(s=>s.classList.toggle("on", s.id==="tab-"+t));
+  if(t==="plan") renderPlan(); if(t==="month") renderMonth(); if(t==="progress") renderProgress(); if(t==="backup") renderCfg();
+  try{ sessionStorage.setItem(KEY+"-tab", t); }catch(e){}
+  window.scrollTo(0,0);
+}
+document.addEventListener("click", e=>{
+  const q = s => e.target.closest(s);
+  let t;
+  if(t=q("nav [data-tab]")){ go(t.dataset.tab); return; }
+  if(t=q("[data-go]")){ e.preventDefault(); S.visited[STEPS[W].id]=true; save(); go(t.dataset.go); return; }
+  if(t=q("[data-w]")){ S.visited[STEPS[W].id]=true; save(); W=+t.dataset.w; renderWizard(); window.scrollTo(0,0); return; }
+  if(t=q("[data-add]")){ const k=t.dataset.add; S[k].push(TPL[k]()); save(); renderWizard(); const f=document.querySelector(`[data-l-k="${k}"][data-i="${S[k].length-1}"]`); if(f) f.focus(); return; }
+  if(t=q("[data-rm]")){ S[t.dataset.rm].splice(+t.dataset.i,1); save(); renderWizard(); return; }
+  if(t=q("[data-up]")){ const i=+t.dataset.up; [S.goals[i-1],S.goals[i]]=[S.goals[i],S.goals[i-1]]; save(); renderWizard(); return; }
+  if(t=q("[data-savepay]")){ const c=t.dataset.savepay, inp=document.querySelector(`[data-paycut="${c}"]`); if(!inp || !(n(inp.value)>0)){ toast("Enter the amount first"); return; } S.paychecks = S.paychecks.filter(p=>!(p.kind==="salary"&&p.pm===PMV&&p.cut===c)); S.paychecks.push({id:uid(), kind:"salary", pm:PMV, cut:c, amount:inp.value}); save(); renderAll(); toast("Paycheck saved, plan recalculated"); return; }
+  if(t=q("[data-rmpay]")){ S.paychecks = S.paychecks.filter(p=>p.id!==t.dataset.rmpay); tickOff(PMV, "xtra:"+t.dataset.rmpay); save(); renderMonth(); return; }
+  if(t=q("[data-showpm]")){ S.seenSummary=t.dataset.showpm; PMV=t.dataset.showpm; save(); go("month"); return; }
+  if(t=q("[data-setbase]")){ S["pay"+t.dataset.setbase]=t.dataset.v; save(); renderAll(); toast("Baseline updated, plan recalculated"); return; }
+  if(t=q("[data-rmspend]")){ S.spend = S.spend.filter(s=>s.id!==t.dataset.rmspend); save(); renderMonth(); return; }
+  if(t=q("[data-setest]")){ const l=S.living.find(x=>x.id===t.dataset.setest); if(l){ l.amount=t.dataset.v; save(); renderAll(); toast("Estimate updated, plan recalculated"); } return; }
+  if(t=q("#ciSave")){ saveCheckin(); return; }
+  if(t=q("#rebase")){ setBaseline(PM_NOW); save(); renderProgress(); toast("Target reset to your current plan"); return; }
+  if(t=q("[data-rmhist]")){ S.history = S.history.filter(x=>x.ym!==t.dataset.rmhist); if(!S.history.length) S.baseline=null; save(); renderProgress(); return; }
+});
+document.addEventListener("input", e=>{
+  const el = e.target;
+  if(el.dataset.k && el.type!=="radio"){ S[el.dataset.k]=el.value; save(); }
+  else if(el.dataset.lK && el.tagName==="INPUT"){ S[el.dataset.lK][+el.dataset.i][el.dataset.f]=el.value; save(); }
+  else if(el.dataset.cfg){ const c=S.cfg[el.dataset.cfg]; c.v=el.value; c.byYou=true; c.src="You"; if(!c.asOf || !/^\d{4}-\d{2}$/.test(c.asOf) || !c._t){ c.asOf=THIS; c._t=1; const a=document.querySelector(`[data-cfgasof="${el.dataset.cfg}"]`); if(a) a.value=c.asOf; } save(); }
+  else if(el.dataset.cfgasof){ S.cfg[el.dataset.cfgasof].asOf=el.value; save(); }
+  else if(el.dataset.cfgplain){ S.cfg[el.dataset.cfgplain]=el.value; save(); }
+
+});
+document.addEventListener("change", e=>{
+  const el = e.target;
+  if(el.type==="radio" && el.dataset.k){ S[el.dataset.k]=el.value; save(); if(el.dataset.k==="payVaries") renderWizard(); return; }
+  if(el.tagName==="SELECT" && el.dataset.k){ S[el.dataset.k]=el.value; save(); if(el.dataset.k==="pmStart"){ PMV=null; refreshPm(); } return; }
+  if(el.dataset.k==="trackFrom"){ PMV=null; refreshPm(); return; }
+  if(el.tagName==="SELECT" && el.dataset.lK){ S[el.dataset.lK][+el.dataset.i][el.dataset.f]=el.value; save(); return; }
+  if(el.dataset.paid || el.dataset.xtra){ const id = el.dataset.paid || "xtra:"+el.dataset.xtra; if(el.checked){ const fx=tickOn(PMV, id, el.dataset.est, el.dataset.cut); if(fx.length) toast(fxText(fx)); } else { tickOff(PMV, id); toast("Undone"); } save(); renderAll(); return; }
+  if(el.dataset.editpay){ const c=salaryCheck(PMV, el.dataset.editpay); if(c){ c.amount=el.value; save(); renderAll(); } return; }
+  if(el.id==="pmv"){ PMV=el.value; renderMonth(); return; }
+  if(el.dataset.paidamt){ const id=el.dataset.paidamt, p=(S.paid[PMV]||{})[id]; if(p){ const cut=p.cut, amt=el.value; tickOff(PMV,id); const fx=tickOn(PMV,id,amt,cut); if(fx.length) toast(fxText(fx)); save(); } renderAll(); return; }
+
+});
+document.addEventListener("submit", e=>{
+  if((e.target.id==="sideForm"||e.target.id==="spendForm") && notTracked(new FormData(e.target).get("date"))){ e.preventDefault(); toast("That's before your tracking start date"); return; }
+  if(e.target.id==="sideForm"){ e.preventDefault(); const f=Object.fromEntries(new FormData(e.target)); S.paychecks.push({id:uid(), kind:"side", pm:pmOfDate(f.date), cut:cutOfDate(f.date), date:f.date, name:(f.name||"").trim(), amount:f.amount}); save(); renderMonth(); toast("Added"); return; }
+  if(e.target.id==="spendForm"){ e.preventDefault(); const f=Object.fromEntries(new FormData(e.target)); S.spend.push({id:uid(), date:f.date, cat:f.cat, amount:n(f.amount), note:(f.note||"").trim()}); save(); renderMonth(); toast("Logged"); }
+});
+$("#exportBtn").addEventListener("click", async ()=>{
+  const name="money-plan-backup-"+TODAY+".json", body=JSON.stringify(S,null,2);
+  const done = msg => { S.lastBackup=TODAY; save(); renderAll(); toast(msg); };
+  // iPhone: share sheet ("Save to Files", AirDrop, email). Elsewhere: normal download.
+  try{
+    const file = new File([body], name, {type:"application/json"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:"Money plan backup"}); done("Backup saved"); return; }
+  }catch(err){ if(err && err.name==="AbortError"){ toast("Backup cancelled"); return; } }
+  const blob=new Blob([body],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name;
+  document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},500); done("Backup downloaded");
+});
+$("#importFile").addEventListener("change", async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  try{ const d=JSON.parse(await f.text()); if(!d || typeof d!=="object" || !("pay15" in d)) throw 0; S=migrate(d); save(); W=0; renderAll(); toast("Backup restored"); }
+  catch(err){ toast("That file isn't a valid backup"); }
+  e.target.value="";
+});
+$("#resetBtn").addEventListener("click", ()=>{
+  const b=$("#resetBtn");
+  if(b.dataset.armed){ S=blank(); save(); W=0; renderAll(); b.textContent="Erase everything"; delete b.dataset.armed; toast("Erased"); }
+  else { b.dataset.armed="1"; b.textContent="Tap again to erase"; setTimeout(()=>{ b.textContent="Erase everything"; delete b.dataset.armed; },4000); }
+});
+function applyTheme(){ const t=S.cfg.theme; if(t) document.documentElement.setAttribute("data-theme",t); else document.documentElement.removeAttribute("data-theme"); }
+$("#themeBtn").addEventListener("click", ()=>{ const dark = S.cfg.theme ? S.cfg.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; S.cfg.theme = dark?"light":"dark"; applyTheme(); save(); });
+const tip=$("#tip");
+document.addEventListener("mousemove", e=>{ const t=e.target.closest("[data-tip]"); if(!t){ tip.style.opacity=0; return; } tip.textContent=t.dataset.tip; tip.style.opacity=1; tip.style.left=Math.min(e.clientX+12, innerWidth-tip.offsetWidth-8)+"px"; tip.style.top=(e.clientY+14)+"px"; });
+document.addEventListener("click", e=>{ const t=e.target.closest("[data-tip]"); if(!t) return; tip.textContent=t.dataset.tip; tip.style.opacity=1; const r=t.getBoundingClientRect(); tip.style.left=Math.max(8, Math.min(r.left+r.width/2-tip.offsetWidth/2, innerWidth-tip.offsetWidth-8))+"px"; tip.style.top=Math.max(8, r.top-tip.offsetHeight-8)+"px"; clearTimeout(tip._h); tip._h=setTimeout(()=>tip.style.opacity=0, 2200); });
+
+applyTheme(); save(); renderAll();
+// New day while the page is open (e.g. left open past midnight): reload so every date, payday and pay month is current.
+// Your data is saved as you type, so nothing is lost.
+(function(){
+  const localDay = () => { const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+  const check = () => { if(localDay()!==TODAY){ const a=document.activeElement; if(a && /INPUT|TEXTAREA|SELECT/.test(a.tagName)) return; location.reload(); } };
+  document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) check(); });
+  window.addEventListener("focus", check);
+  setInterval(check, 60000);
+})();
+try{ const t=sessionStorage.getItem(KEY+"-tab"); if(t && document.getElementById("tab-"+t)) go(t); }catch(e){}
+// Offline app: cache everything on first open, ask the phone to keep the data.
+if("serviceWorker" in navigator && location.protocol!=="file:") navigator.serviceWorker.register("sw.js").catch(()=>{});
+try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
+const net = () => document.body.classList.toggle("offline", !navigator.onLine);
+addEventListener("online", net); addEventListener("offline", net); net();
+})();
+</script>
+</body>
+</html>
